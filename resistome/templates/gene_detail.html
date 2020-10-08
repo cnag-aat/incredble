@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% load bootstrap4 %}
+{% block page_content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ sample.get_absolute_url }}"">Sample {{ sample.name }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ annotation.scaffold.get_absolute_url }}">Scaffold {{ annotation.scaffold.scaffold }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Gene {{ annotation.gene }}</li>
+  </ol>
+</nav>
+<p>
+<div class="row m-1">
+  <div class="col-md-12">
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title">Prokka Annotation</h5>
+        {% autoescape off %}
+        {% render_table annotation_table %}
+        {% endautoescape %}
+      </div>
+    </div>
+  </div>
+  {% if rgi_table %}
+  <div class="col-md-12">
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title">Resistance Gene Identifier (RGI)</h5>
+        {% render_table rgi_table %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if amrf_table %}
+  <div class="col-md-12">
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title">AMR Finder</h5>
+        {% render_table amrf_table %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

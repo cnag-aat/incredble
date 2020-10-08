@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load render_table from django_tables2 %}
+{% load static %}
+{% load bootstrap4 %}
+{% block header %}
+
+<link rel="stylesheet" href="/static/css/sidebar.css">
+
+{% endblock %}
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% block page_content %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<div id="mySidebar" class="sidebar">
+  <p>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <div class=" row m-1">
+      <form action="" method="get" class="form">
+        {% bootstrap_form filter.form layout='horizontal' %}
+        {% bootstrap_button 'filter' %}
+        <a class="btn btn-link" href="{% url 'spain_map_filter' %}">clear filters</a>
+      </form>
+    </div>
+</div>
+
+<div id="main">
+  <button class="btn btn-link" onclick="openNav()">☰ Filters</button>
+
+  <div class="row m-1">
+    <div class="col m-2" style="min-width: 800px;">
+      <div> {{plot|safe}}</div>
+    </div>
+  </div>
+  <div class="row m-1">
+    <div class="col m-2">
+
+      <div class="card mb-2">
+        <div class="card-header">
+          <h5 class="mb-0">
+            <a data-toggle="collapse" href="#collapseSampleData" role="button" aria-expanded="false" aria-controls="collapseSampleData">
+              Sample Data
+            </a>
+          </h5>
+        </div>
+        <div class="collapse" id="collapseSampleData">
+          <div class="card-body">
+            {% autoescape off %}{% render_table table %}{% endautoescape %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "460px";
+    document.getElementById("main").style.marginLeft = "460px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+</script>
+{% endblock %}

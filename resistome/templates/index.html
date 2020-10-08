@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% block page_content %}
+<div class="row">
+  <div class="col-md-12">
+    <p>
+    <div class="card mb-2">
+      <div class="card-body">
+        {% if user.is_authenticated %}
+        <h5 class="card-title">The Carbapenem-resistant Enterobacteriaceae (CRE) Genome Database Project</h5>
+        <p>The in<strong>CREDB</strong>le database stores resistance profiles and genomic information
+          (genome sequence and resistance genes) for approximately 500 antiobiotic-resistant
+          bacterial samples.
+        </p>
+        </p>The project is a collaboration between the CNAG, Roche and Dr. Germán Bou,
+        who has coordinated the collection and DNA extraction of antiobiotic-resistant
+        bacteria from Spanish hospitals.</p>
+        {% else %}
+        <p>Collaborators, please register or login using link above.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

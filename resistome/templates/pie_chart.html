@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+{% block page_content %}
+
+
+
+  <div id="container" style="width: 100%;">
+    <div class="card m-2">
+      <div class="card-header">
+        <h5 class="mb-0">
+            Species
+        </h5>
+      </div>
+      <div class="card-body">
+        <canvas id="species-pie-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="card m-2">
+      <div class="card-header">
+        <h5 class="mb-0">
+            Communities
+        </h5>
+      </div>
+      <div class="card-body">
+        <canvas id="community-pie-chart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ species_data|safe }},
+          backgroundColor: [
+            '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99'
+          ],
+          label: 'Species'
+        }],
+        labels: {{ species_labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+
+
+    var community_config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ community_data|safe }},
+          backgroundColor: [
+            '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928','#afafaf'
+          ],
+          label: 'Communities'
+        }],
+        labels: {{ community_labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('species-pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+      var community_ctx = document.getElementById('community-pie-chart').getContext('2d');
+      window.myPie = new Chart(community_ctx, community_config);
+    };
+
+  </script>
+
+
+
+{% endblock %}

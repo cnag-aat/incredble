@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% block page_content %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<p>
+<div class="row">
+  <div {{plot|safe}}</div>
+</div>
+{% endblock %}

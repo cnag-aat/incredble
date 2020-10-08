@@ -1,0 +1,36 @@
+{# scaffold.html #}
+{% extends "base.html" %}
+{% load render_table from django_tables2 %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block page_content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ sample.get_absolute_url }}">Sample {{ sample.name }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Scaffold {{ scaffold.scaffold }}</li>
+  </ol>
+</nav>
+
+<div class="row m-1">
+  <div class="col-md-12">
+    <div class="card mb-2">
+      <div class="card-body">
+
+          {% render_table scaffold_table %}
+
+      </div>
+    </div>
+  </div>
+  <div class="row m-1">
+    <div class="col-md-12">
+      <div class="card mb-2">
+        <div class="card-body">
+
+            {% render_table centrifuge_table %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

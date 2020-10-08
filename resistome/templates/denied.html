@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% block page_content %}
+<div class="row">
+  <div class="col-md-12">
+    <p>
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title">Access denied!</h5>
+        <p>If you are a collaborator, please <a href="{% url 'account_login' %}">LOGIN</a> to access the database.
+          If you have not done so yet, please <a href="{% url 'account_signup' %}">REGISTER</a> first and wait for admin approval before accessing the database.
+        <p>If you are not a collaborator, you may not access the database at this time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

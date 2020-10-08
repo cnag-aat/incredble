@@ -1,0 +1,319 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+{% block page_content %}
+
+
+
+  <div id="container" style="width: 100%;">
+    <div class="card m-2">
+      <div class="card-header">
+        <h5 class="mb-0">
+            Species
+        </h5>
+      </div>
+      <div class="card-body">
+        <canvas id="species-pie-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="card m-2">
+      <div class="card-header">
+        <h5 class="mb-0">
+            Communities
+        </h5>
+      </div>
+      <div class="card-body">
+        <canvas id="community-pie-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="card m-2">
+      <div class="card-header">
+        <h5 class="mb-0">
+            K. pneumoniae Sequence Types
+        </h5>
+      </div>
+      <div class="card-body">
+        <canvas id="kp-pie-chart"></canvas>
+      </div>
+    </div>
+
+        <div class="card m-2">
+          <div class="card-header">
+            <h5 class="mb-0">
+                E. cloacae complex Sequence Types
+            </h5>
+          </div>
+          <div class="card-body">
+            <canvas id="enterobacter-pie-chart"></canvas>
+          </div>
+        </div>
+
+        <div class="card m-2">
+          <div class="card-header">
+            <h5 class="mb-0">
+                E. coli Sequence Types
+            </h5>
+          </div>
+          <div class="card-body">
+            <canvas id="ecoli-pie-chart"></canvas>
+          </div>
+        </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-style@latest/dist/chartjs-plugin-style.min.js"></script>
+
+  <script>
+    window.onload = function() {
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ species_data|safe }},
+          // shadowOffsetX: 3,
+          // shadowOffsetY: 3,
+          // shadowBlur: 10,
+          // shadowColor: 'rgba(0, 0, 0, 0.5)',
+          backgroundColor: [
+            '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#F0E68C'
+          ],
+          label: 'Species'
+        }],
+        labels: {{ species_labels|safe }}
+      },
+      options: {
+        responsive: true,
+        devicePixelRatio: 4,
+        // padding: {
+        //         left: 10,
+        //         right: 10,
+        //         top: 10,
+        //         bottom: 10
+        //     },
+        // title: {
+        //     display: true,
+        //     position: 'top',
+        //     text: 'Species',
+        //     fontSize: 20
+        // },
+        legend: {
+            display: true,
+            position: 'right',
+            labels: {
+                fontSize: 16
+            }
+        },
+        plugins: {
+                    datalabels: {
+                        display: 'auto',
+                        align: 'start',
+                        anchor: 'end',
+                        color: 'white',
+                        font: { weight: 'bold', size: 16, },
+                        labels: {
+                            title: {
+                                color: 'white'
+                            },
+                            value: {
+                                color: 'green'
+                            }
+                        }
+                    }
+                }
+          }
+    };
+
+
+
+    var community_config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ community_data|safe }},
+          backgroundColor: [
+            '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#F0E68C','#BDB76B','#b15928','#afafaf'
+          ],
+          label: 'Communities'
+        }],
+        labels: {{ community_labels|safe }}
+      },
+      options: {
+        responsive: true,
+        devicePixelRatio: 4,
+        legend: {
+            display: true,
+            position: 'right',
+            labels: {
+                fontSize: 16
+            }
+        },
+        plugins: {
+                    datalabels: {
+                        display: 'auto',
+                        align: 'start',
+                        anchor: 'end',
+                        color: 'white',
+                        font: { weight: 'bold', size: 16, },
+                        labels: {
+                            title: {
+                                color: 'white'
+                            },
+                            value: {
+                                color: 'green'
+                            }
+                        }
+                    }
+                }
+      }
+    };
+
+    var kp_config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ kp_data|safe }},
+          backgroundColor: [
+            '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#F0E68C','#BDB76B','#b15928','#654321','#101010','#202020','#282828','#303030','#383838','#404040','#484848','#505050','#585858','#606060','#686868','#707070','#787878','#808080','#888888','#909090','#989898','#A0A0A0','#A8A8A8','#B0B0B0','#B8B8B8','#C0C0C0','#C8C8C8','#D0D0D0','#D8D8D8','#E0E0E0','#D8D8D8','#F0F0F0','#F8F8F8',"#FFFFFF"
+          ],
+          label: 'Kp ST'
+        }],
+        labels: {{ kp_labels|safe }}
+      },
+      options: {
+        responsive: true,
+        devicePixelRatio: 4,
+        legend: {
+            display: true,
+            position: 'right',
+            labels: {
+                fontSize: 16
+            }
+        },
+        plugins: {
+                    datalabels: {
+                        display: 'auto',
+                        align: 'start',
+                        anchor: 'end',
+                        color: 'white',
+                        font: { weight: 'bold', size: 16, },
+                        labels: {
+                            title: {
+                                color: 'white'
+                            },
+                            value: {
+                                color: 'green'
+                            }
+                        }
+                    }
+                }
+      }
+    };
+
+        var enterobacter_config = {
+          type: 'pie',
+          data: {
+            datasets: [{
+              data: {{ enterobacter_data|safe }},
+              backgroundColor: [
+                '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#F0E68C','#BDB76B','#b15928','#654321','#000000','#101010','#202020','#303030','#404040','#505050','#606060','#707070','#808080','#909090','#A0A0A0','#B0B0B0','#C0C0C0','#D0D0D0','#E0E0E0','#F0F0F0','#F8F8F8',"#FFFFFF"
+              ],
+              label: 'E. cloacae complext ST'
+            }],
+            labels: {{ enterobacter_labels|safe }}
+          },
+          options: {
+            responsive: true,
+            devicePixelRatio: 4,
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontSize: 16
+                }
+            },
+            plugins: {
+                        datalabels: {
+                            display: 'auto',
+                            align: 'start',
+                            anchor: 'end',
+                            color: 'white',
+                            font: { weight: 'bold', size: 16, },
+                            labels: {
+                                title: {
+                                    color: 'white'
+                                },
+                                value: {
+                                    color: 'green'
+                                }
+                            }
+                        }
+                    }
+          }
+        };
+
+            var ecoli_config = {
+              type: 'pie',
+              data: {
+                datasets: [{
+                  data: {{ ecoli_data|safe }},
+                  backgroundColor: [
+                    '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#F0E68C','#BDB76B','#b15928','#654321','#808080','#D8D8D8','#F0F0F0','#F8F8F8',"#FFFFFF"
+                  ],
+                  label: 'E. coli ST'
+                }],
+                labels: {{ ecoli_labels|safe }}
+              },
+              options: {
+                responsive: true,
+                legend: {
+                    display: true,
+                    position: 'right',
+                    labels: {
+                        fontSize: 16
+                    }
+                },
+                plugins: {
+                            datalabels: {
+                                display: 'auto',
+                                align: 'start',
+                                anchor: 'end',
+                                color: 'white',
+                                font: { weight: 'bold', size: 16, },
+                                labels: {
+                                    title: {
+                                        color: 'white'
+                                    },
+                                    value: {
+                                        color: 'green'
+                                    }
+                                }
+                            }
+                        }
+              }
+            };
+
+
+      var ctx = document.getElementById('species-pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+      var community_ctx = document.getElementById('community-pie-chart').getContext('2d');
+      window.myPie = new Chart(community_ctx, community_config);
+      var kp_ctx = document.getElementById('kp-pie-chart').getContext('2d');
+      window.myPie = new Chart(kp_ctx, kp_config);
+      var enterobacter_ctx = document.getElementById('enterobacter-pie-chart').getContext('2d');
+      window.myPie = new Chart(enterobacter_ctx, enterobacter_config);
+      var ecoli_ctx = document.getElementById('ecoli-pie-chart').getContext('2d');
+      window.myPie = new Chart(ecoli_ctx, ecoli_config);
+    };
+
+
+  </script>
+
+
+
+{% endblock %}
