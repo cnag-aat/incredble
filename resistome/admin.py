@@ -24,9 +24,15 @@ def export_csv(modeladmin, request, queryset):
     return response
 export_csv.short_description = "Export CSV"
 
-@register(RelaxaseType)
 
-@register(RepliconType)
+@register(GenomeUpload)
+class GenomeUploadAdmin(admin.ModelAdmin):
+    list_display = (
+        'fasta',
+        'description',
+        'uploaded_at',
+        'result'
+    )
 
 @register(Species)
 class SpeciesAdmin(admin.ModelAdmin):
@@ -34,7 +40,8 @@ class SpeciesAdmin(admin.ModelAdmin):
 
 
 @register(Carbapenemase)
-
+class CarbapenemaseAdmin(admin.ModelAdmin):
+    list_display = ('name', )
 
 @register(BiologicalSampleOfIsolation)
 class BiologicalSampleOfIsolationAdmin(admin.ModelAdmin):

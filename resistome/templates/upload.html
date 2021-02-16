@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+{% load crispy_forms_tags %}
+{% endblock %}
+{% block page_content %}
+
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <h1 class="mt-2">Quick Genome Search</h1>
+          <hr class="mt-0 mb-4">
+          {{ form|crispy }}
+          <button type="submit">Upload CRE Genome Assembly</button>
+          <br><hr>Note: Only the first 100 sequences of the FASTA file uploaded will be analyzed.
+          Your FASTA may be gzipped to decrease upload time and save space on our server and will be deleted from the server after one week.
+          Your search results will be kept so that you can bookmark the result page URL.
+        </div>
+      </div>
+    </div>
+
+</form>
+
+
+{% endblock %}

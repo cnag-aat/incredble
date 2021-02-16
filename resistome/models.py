@@ -352,6 +352,11 @@ class Centrifuge(models.Model):
     def __str__(self):
         return '%s' % self.centrifuge_species
 
+CORE_CHOICES = (
+    ("core", "core"),
+    ("soft_core", "soft core"),
+    ("shell","shell"),
+    ("cloud","cloud"))
 
 class Annotation(models.Model):
     scaffold = models.ForeignKey(Scaffold, on_delete=models.CASCADE,
@@ -360,7 +365,7 @@ class Annotation(models.Model):
     end = models.PositiveIntegerField(null=True, blank=True)
     orientation = models.CharField(max_length=1, blank=True, null=True, choices=(('+', '+'), ('-', '-')))
     gene = models.CharField(max_length=20, unique=True, blank=True, null=True)
-    gene_name = models.CharField(max_length=20, blank=True, null=True)
+    gene_name = models.CharField(max_length=20, blank=True, null=True, db_index=True )
     rgi = models.CharField(max_length=3, blank=True, null=True, db_index=True, choices=(('Yes', 'Yes'),))
     amrf = models.CharField(max_length=3, blank=True, null=True, db_index=True, choices=(('Yes', 'Yes'),))
     ec_number = models.CharField(max_length=20, blank=True, null=True)
@@ -368,7 +373,11 @@ class Annotation(models.Model):
     inference = models.TextField(blank=True, null=True)
     jbrowse_link = models.URLField(max_length=1000, blank=True, null=True)
     protein_sequence = models.TextField(blank=True, null=True)
-    orthogroup = models.CharField(max_length=10, blank=True, null=True, verbose_name="OrthoGroup")
+    orthogroup = models.CharField(max_length=10, blank=True, null=True, db_index=True, verbose_name="OrthoGroup")
+    roary_gene = models.CharField(max_length=25, blank=True, null=True, db_index=True, verbose_name="RoaryGroup")
+    roary_core = models.CharField(max_length=15, blank=True, null=True, db_index=True, verbose_name="Core classification", choices=CORE_CHOICES)
+    prokka_id = models.CharField(max_length=15, blank=True, null=True, verbose_name="Prokka ID")
+
     class Meta:
         indexes = (
             models.Index(fields=['rgi','amrf']),
@@ -475,3 +484,9 @@ class AMRF(models.Model):
 
     def __str__(self):
         return self.gene
+
+class GenomeUpload(models.Model):
+    description = models.CharField(max_length=255, blank=True)
+    fasta = models.FileField(upload_to='uploaded_genomes/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    result = models.CharField(max_length=10000, blank=True)

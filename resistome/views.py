@@ -1,21 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import django_filters
 from django.views.generic import ListView
 from resistome.models import *
 from django.views.generic import TemplateView
-#from resistome.models import Assembly
 from django_tables2 import SingleTableView
 from django_tables2 import RequestConfig
 from resistome.tables import SampleTable
 from resistome.tables import ResistanceTable
 from resistome.tables import ClinicalTable
 from resistome.tables import ScaffoldsTable
-from resistome.tables import ScaffoldListTable
+# from resistome.tables import ScaffoldListTable
 from resistome.tables import AnnotationTable
 from resistome.tables import AnnotationListTable
+from resistome.tables import AnnotationCoordsTable
 from resistome.tables import GeneFiltTable
 from resistome.tables import RgiTable
-from resistome.tables import SingleScaffoldTable
+# from resistome.tables import SingleScaffoldTable
 from resistome.tables import CentrifugeTable
 from django_tables2.export.views import ExportMixin
 from django_filters.views import FilterView
@@ -24,6 +24,7 @@ from resistome.filters import SampleFilter
 from resistome.filters import ScaffoldFilter
 from resistome.filters import GeneFilter
 from resistome.filters import AnnotationFilter
+from resistome.forms import GenomeUploadForm
 import plotly.graph_objects as go
 import pandas as pd
 from plotly.offline import plot
@@ -34,13 +35,90 @@ from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Count
 from django.db.models import Q
-# Create your views here.
-# def sample_index(request):
-#    samples = Sample.objects.all()
-#    context = {"samples": samples}
-#    return render(request, "sample_index.html", context)
-# def index(request):
-#    return render(request, 'index.html')
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
+import subprocess
+import json
+import os, time, sys
+# import rest_framework
+# from rest_framework import generics
+# from rest_framework import viewsets
+# from rest_framework.mixins import ListModelMixin
+# from rest_framework.viewsets import GenericViewSet
+# #from rest_framework import GenericViewSet
+#
+#
+# class ExportListViewSetMixin(ExportMixin, ListModelMixin, GenericViewSet):
+#
+#     def list(self, request, *args, **kwargs):
+#         queryset = self.filter_queryset(queryset=self.get_queryset())
+#
+#         if self.action == 'export_list':
+#             serializer = self.get_serializer(queryset, many=True)
+#             return Response(serializer.data)
+#
+#         return super(ExportListViewSetMixin, self).list(request, *args, **kwargs)
+#
+#     @action(detail=False, methods=['get'], url_path='export')
+#     def export_list(self, request):
+#         return super().export_response()
+
+@permission_required("resistome.view_sample", login_url='access_denied')
+def model_form_upload(request):
+    if request.method == 'POST':
+        form = GenomeUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_query=form.save()
+            process = subprocess.run('/home/www/resistome.cnag.cat/incredible/search/mash dist -i /home/www/resistome.cnag.cat/incredible/search/incredble.release7.fasta.msh /home/www/resistome.cnag.cat/incredible/deployment/data/'+ new_query.fasta.name +' | /home/www/resistome.cnag.cat/incredible/search/mash_hits_to_json.pl', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
+            output = process.stdout
+            new_query.result = output
+            new_query.save()
+            #myupload=GenomeUpload.objects.get(pk=new_query.pk)
+            #clean up upload directory
+            path = r"/home/www/resistome.cnag.cat/incredible/deployment/data/uploaded_genomes/"
+            now = time.time()
+            for f in os.listdir(path):
+                f = os.path.join(path, f)
+                if os.stat(f).st_mtime < now - 7 * 86400:
+                    if os.path.isfile(f):
+                        os.remove(f)
+            return redirect('/incredble/result/'+ str(new_query.pk) +'/')
+    else:
+        form = GenomeUploadForm()
+    return render(request, 'upload.html', {
+        'form': form
+    })
+
+@permission_required("resistome.view_sample", login_url='access_denied')
+def mash_result(request, pk=None):
+    context = {"result": "No hits"}
+    if pk:
+        genome = GenomeUpload.objects.get(pk=pk)
+        #process = subprocess.run('/home/www/resistome.cnag.cat/incredible/search/mash dist -i /home/www/resistome.cnag.cat/incredible/search/incredble.release7.fasta.msh /home/www/resistome.cnag.cat/incredible/deployment/data/'+ genome.fasta.name +' | /home/www/resistome.cnag.cat/incredible/search/mash_hits_to_json.pl', shell=True, check=True, stdout=subprocess.PIPE, universal_newlines=True)
+        #output = process.stdout
+        #parsed = json.loads(output)
+        parsed = json.loads(genome.result)
+
+        if parsed['top_sample'] != 'none':
+            context = { "genome": genome,
+                        "top_sample": parsed['top_sample'],
+                            "top_sample_score": parsed['top_sample_score'],
+                                "top_sample_scaffolds": parsed['top_sample_scaffolds'],
+                                    "top_scaffolds":parsed['top_scaffolds']
+                                    }
+            response = render(request, "mash_result.html", context)
+            response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
+            return response
+        else:
+            response = render(request, "no_hits.html", context)
+            response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
+            return response
+
+    response = render(request, "mash_result.html", context)
+    response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
+    return response
+
 
 def charts(request):
     species_labels = []
@@ -73,8 +151,6 @@ def charts(request):
     sequence_types = Sample.objects.filter(species=species_qs[0].pk).order_by().values('assembly__mlst__st').distinct()
     for seqtype in sequence_types:
         qs = Sample.objects.filter(species=species_qs[0].pk).filter(assembly__mlst__st=seqtype['assembly__mlst__st'])
-        #kp_labels.append(seqtype['assembly__mlst__st'])
-        #kp_data.append(qs.count())
         kpdict[seqtype['assembly__mlst__st']]=qs.count()
 
     sort_kpdict = sorted(kpdict.items(), key=lambda x: x[1], reverse=True)
@@ -103,8 +179,6 @@ def charts(request):
     sequence_types = Sample.objects.filter(species=species_qs[0].pk).order_by().values('assembly__mlst__st').distinct()
     for seqtype in sequence_types:
         qs = Sample.objects.filter(species=species_qs[0].pk).filter(assembly__mlst__st=seqtype['assembly__mlst__st'])
-        #kp_labels.append(seqtype['assembly__mlst__st'])
-        #kp_data.append(qs.count())
         ecolidict[seqtype['assembly__mlst__st']]=qs.count()
 
     sort_ecolidict = sorted(ecolidict.items(), key=lambda x: x[1], reverse=True)
@@ -131,9 +205,6 @@ class HomeView(TemplateView):
 
 class SideBar(TemplateView):
     template_name = 'sidebar.html'
-
-# class JbrowseView(TemplateView):
-#    template_name = 'browse/index.html'
 
 
 class BlastView(PermissionRequiredMixin, TemplateView):
@@ -269,7 +340,7 @@ def sample_detail(request, pk=None, barcode=None):
         df = DataFiles.objects.get(assembly=ass.pk)
     except DataFiles.DoesNotExist:
         df = None
-    scaffolds = Scaffold.objects.filter(assembly=ass.pk).annotate(num_genes=Count(
+    scaffolds = Scaffold.objects.filter(assembly=ass.pk).annotate(all_genes=Count('gene_set'),num_genes=Count(
         'gene_set', filter=(Q(gene_set__rgi='Yes') | Q(gene_set__amrf='Yes'))))
     hosp = None
     maploc = " "
@@ -381,8 +452,6 @@ def sample_detail(request, pk=None, barcode=None):
     response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
     return response
 
-
-# ExportMixin, SingleTableView,
 class SampleListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
     permission_required = "resistome.view_sample"
     login_url = "access_denied"
@@ -397,40 +466,17 @@ class SampleListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, Fil
         return response
 
 
-@permission_required("resistome.view_annotation", login_url='access_denied')
-def gene_list_filtScaffold(request, scaffold):
-    #geneset = Annotation.objects.filter(scaffold=scaffold)
-    scaff = Scaffold.objects.get(scaffold=scaffold)
-    #query = Q(scaffold=scaff)
-    #query.add(Q(rgi='Yes'), Q.AND)
-    #query.add(Q(amrf='Yes'), Q.OR)
-    filteredgenes = Annotation.objects.filter(Q(scaffold=scaff) & (
-        Q(rgi='Yes') | Q(amrf='Yes')))  # this is where get_related would work
-    # sample=Scaffold.objects.get(scaffold=scaffold).sample
-    gene_table = AnnotationListTable(filteredgenes)
-    #f = GeneFilter
-    context = {"scaffold": scaff,
-               "table": gene_table,
-               # "filter": f
-               }
-    return render(request, "filteredgenes.html", context)
-
-
 @permission_required("resistome.view_scaffold", login_url='access_denied')
 def ScaffoldView(request, scaffold):
-    #scaff = Scaffold.objects.filter(scaffold=scaffold)
-    #filteredgenes = Annotation.objects.filter(Q(scaffold=scaffold) & (Q(rgi='Yes') | Q(amrf='Yes')))
-    scaff = Scaffold.objects.filter(scaffold=scaffold).annotate(num_genes=Count(
-        'gene_set', filter=(Q(gene_set__rgi='Yes') | Q(gene_set__amrf='Yes'))))
+    scaff = Scaffold.objects.filter(scaffold=scaffold).annotate(num_genes=Count('gene_set', filter=(Q(gene_set__rgi='Yes') | Q(gene_set__amrf='Yes'))),all_genes=Count('gene_set'))
     sample = scaff[0].sample
-    scaff_table = SingleScaffoldTable(scaff)
+    scaff_table = ScaffoldsTable(scaff)
     centrifuge = Centrifuge.objects.filter(scaffold=scaff[0].pk)
     centrifuge_table = CentrifugeTable(centrifuge)
     context = {"sample": sample,
                "scaffold_table": scaff_table,
                "centrifuge_table": centrifuge_table,
                "scaffold": scaff[0],
-               # "filter": f
                }
     response = render(request, "scaffold.html", context)
     return render(request, "scaffold.html", context)
@@ -439,29 +485,21 @@ class ScaffoldListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, F
     permission_required = "resistome.view_scaffold"
     login_url = "access_denied"
     model = Scaffold
-    table_class = ScaffoldListTable
+    table_class = ScaffoldsTable
     template_name = 'scaffold_list.html'
     filterset_class = ScaffoldFilter
     table_pagination = {"per_page": 50}
     def get_queryset(self):
         qs = super().get_queryset()
-        return qs.annotate(num_genes=Count(
-            'gene_set', filter=(Q(gene_set__rgi='Yes') | Q(gene_set__amrf='Yes'))))
+        return qs.annotate(num_genes=Count('gene_set', filter=(Q(gene_set__rgi='Yes') | Q(gene_set__amrf='Yes'))),all_genes=Count('gene_set'))
+        #return qs.annotate(num_genes=Count(
+        #    'gene_set', filter=(Q(gene_set__rgi='Yes') | Q(gene_set__amrf='Yes'))))
     def render_to_response(self, context, **response_kwargs):
         response = super(ScaffoldListView, self).render_to_response(context, **response_kwargs)
         response.set_cookie('CRE', 'uq4QeBPJRR9wRUV4')
         return response
 
-# class GeneListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView): #ExportMixin, SingleTableView,
-#     permission_required = "resistome.view_annotation"
-#     login_url = "/access_denied"
-#     model = Rgi
-#     table_class = GeneTable
-#     template_name = 'genes.html'
-#     filterset_class = GeneFilter
-#     table_pagination={"per_page": 50}
 
-# ExportMixin, SingleTableView,
 class AnnotationListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
     permission_required = "resistome.view_annotation"
     login_url = "access_denied"
@@ -470,10 +508,121 @@ class AnnotationListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin,
     template_name = 'annotation.html'
     filterset_class = AnnotationFilter
     table_pagination = {"per_page": 50}
+
     def render_to_response(self, context, **response_kwargs):
         response = super(AnnotationListView, self).render_to_response(context, **response_kwargs)
         response.set_cookie('CRE', 'uq4QeBPJRR9wRUV4')
         return response
+
+class AnnotationCoordsView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+    permission_required = "resistome.view_annotation"
+    login_url = "access_denied"
+    model = Annotation
+    table_class = AnnotationCoordsTable
+    template_name = 'coords.html'
+    filterset_class = AnnotationFilter
+    table_pagination = {"per_page": 50}
+
+    def render_to_response(self, context, **response_kwargs):
+        response = super(AnnotationCoordsView, self).render_to_response(context, **response_kwargs)
+        response.set_cookie('CRE', 'uq4QeBPJRR9wRUV4')
+        return response
+
+
+@permission_required("resistome.view_sample", login_url='access_denied')
+def AnnotationFastaView(request):
+    genes = Annotation.objects.all()
+    for filter_field in request.GET.keys():
+        if request.GET.get(filter_field):
+            ff = filter_field
+            if (ff == 'st'):
+                ff = 'scaffold__assembly__mlst__st'
+                genes = genes.filter(**{ff: request.GET.get(filter_field)})
+            elif (ff == 'scaffold'):
+                ff = 'scaffold__scaffold'
+                genes = genes.filter(**{ff: request.GET.get(filter_field)})
+            elif (ff == 'resistance'):
+                genes = genes.filter(Q(rgi='Yes') | Q(amrf='Yes'))
+            else:
+                genes = genes.filter(**{ff: request.GET.get(filter_field)})
+    fasta = ''
+    count = 1
+    def insert_newlines(string, every=80):
+        return '\n'.join(string[i:i+every] for i in range(0, len(string), every))
+    def xstr(s):
+        if s is None:
+            return ''
+        return str(s)
+
+    for g in genes[:10000]:
+        mlst = MLST.objects.filter(assembly=g.scaffold.assembly)
+        seq = insert_newlines(g.protein_sequence)
+        fasta += ">"+g.gene +"|"+ xstr(g.gene_name) +"|"+ xstr(g.roary_gene) +"|ST"+ xstr(mlst[0].st) +"\n" + seq + "\n"
+        count+=1
+        if count>10000:
+            break
+
+    return HttpResponse(fasta, content_type="text/plain")
+
+@permission_required("resistome.view_sample", login_url='access_denied')
+def AnnotationCoordView(request):
+    genes = Annotation.objects.all()
+    for filter_field in request.GET.keys():
+        if request.GET.get(filter_field):
+            ff = filter_field
+            if (ff == 'st'):
+                ff = 'scaffold__assembly__mlst__st'
+                genes = genes.filter(**{ff: request.GET.get(filter_field)})
+            elif (ff == 'scaffold'):
+                ff = 'scaffold__scaffold'
+                genes = genes.filter(**{ff: request.GET.get(filter_field)})
+            elif (ff == 'resistance'):
+                genes = genes.filter(Q(rgi='Yes') | Q(amrf='Yes'))
+            else:
+                genes = genes.filter(**{ff: request.GET.get(filter_field)})
+    tsv = ''
+
+    def xstr(s):
+        if s is None:
+            return ''
+        return str(s)
+
+    for g in genes:
+        mlst = MLST.objects.filter(assembly=g.scaffold.assembly)
+        separator = '\t'
+        tsv += separator.join([g.scaffold.scaffold,str(g.start),str(g.end),g.orientation,xstr(g.roary_gene),xstr(g.scaffold.sample.barcode),xstr(mlst[0].st)]) +"\n"
+
+
+    return HttpResponse(tsv, content_type="text/plain")
+# @permission_required("resistome.view_sample", login_url='access_denied')
+# def ScaffoldFastaView(request):
+#     scaffs = Scaffold.objects.all()
+#     for filter_field in request.GET.keys():
+#         if request.GET.get(filter_field):
+#             ff = filter_field
+#             if (ff == 'st'):
+#                 ff = 'assembly__mlst__st'
+#                 scaffs = scaffs.filter(**{ff: request.GET.get(filter_field)})
+#             else:
+#                 scaffs = scaffs.filter(**{ff: request.GET.get(filter_field)})
+#     fasta = ''
+#     count = 1
+#     def insert_newlines(string, every=80):
+#         return '\n'.join(string[i:i+every] for i in range(0, len(string), every))
+#     def xstr(s):
+#         if s is None:
+#             return ''
+#         return str(s)
+#
+#     for s in scaffs[:10000]:
+#         mlst = MLST.objects.filter(assembly=s.assembly)
+#         seq = insert_newlines( GET SEQUENCE SOMEHOW )
+#         fasta += ">"+s.scaffold  +"\n" + seq + "\n"
+#         count+=1
+#         if count>10000:
+#             break
+#
+#     return HttpResponse(fasta, content_type="text/plain")
 
 
 @permission_required("resistome.view_annotation", login_url='access_denied')
@@ -517,6 +666,10 @@ def gene_detail(request, pk=None, gene=None):
             annotation.protein_sequence)},
         {'Name': 'Orthologous Group', 'Value': mark_safe('<a href="/incredble/genes/?orthogroup=' + str(
             annotation.orthogroup) + '">' + str(annotation.orthogroup) + '</a>')},
+        {'Name': 'Roary Gene Group', 'Value': mark_safe('<a href="/incredble/genes/?roary_gene=' + str(
+            annotation.roary_gene) + '">' + str(annotation.roary_gene) + '</a>')},
+        {'Name': 'Roary Core Annotation', 'Value': str(
+            annotation.roary_core)},
 
     ]
 
@@ -592,69 +745,65 @@ def gene_detail(request, pk=None, gene=None):
     response = render(request, "gene_detail.html", context)
     response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
     return response
-    # return render(request, "gene_detail.html", context)
 
 
-@permission_required("resistome.view_annotation", login_url='access_denied')
-def gene_detail_old(request, pk):
-    rgi = Rgi.objects.get(pk=pk)
-    annotation = Annotation.objects.get(rgi_set=pk)
-    sample = annotation.scaffold.sample
-    annotation_data = [  # {'Agent': 'piper', 'CLSI': str(clsi.piper), 'EUCAST': str(eucast.piper)},
-        # str(annotation.scaffold) + ':' + str(annotation.start) + ".." + str(annotation.end) + str(annotation.orientation)},
-        {'Name': 'Browse', 'Value': mark_safe(str(annotation.jbrowse_link))},
-        {'Name': 'Gene ID', 'Value': str(annotation.gene)},
-        {'Name': 'Gene Name', 'Value': str(annotation.gene_name)},
-        {'Name': 'EC Number', 'Value': str(annotation.ec_number)},
-        {'Name': 'Product', 'Value': str(annotation.product)},
-        {'Name': 'Inference', 'Value': str(annotation.inference)},
-        {'Name': 'Protein Sequence', 'Value': str(
-            annotation.protein_sequence)},
-    ]
-
-    annotation_table = AnnotationTable(annotation_data)
-
-    rgi_data = [
-        {'Name': 'Drug Class', 'Value': str(rgi.drug_class)},
-        {'Name': 'Resistance Mechanism',
-         'Value': str(rgi.resistance_mechanism)},
-        {'Name': 'AMR Gene Family',
-         'Value': str(rgi.amr_gene_family)},
-        {'Name': 'Best Hit ARO', 'Value': str(rgi.best_hit_aro)},
-        {'Name': 'Best Hit Bitscore',
-         'Value': str(rgi.best_hit_bitscore)},
-        {'Name': 'Best Identities',
-         'Value': str(rgi.best_identities)},
-        {'Name': 'ARO', 'Value': str(rgi.aro)},
-        {'Name': 'Model Type', 'Value': str(rgi.model_type)},
-        {'Name': 'SNPs in Best Hit ARO',
-         'Value': str(rgi.snps_in_best_hit_aro)},
-        {'Name': 'Other SNPs', 'Value': str(rgi.other_snps)},
-        {'Name': 'Complete', 'Value': str(rgi.complete)},
-        {'Name': 'Start Type', 'Value': str(rgi.start_type)},
-        {'Name': 'RBS Motif', 'Value': str(rgi.rbs_motif)},
-        {'Name': 'RBS Spacer', 'Value': str(rgi.rbs_spacer)},
-        {'Name': 'GC Content', 'Value': str(rgi.gc_cont)},
-        {'Name': 'Cut Off', 'Value': str(rgi.cut_off)},
-        {'Name': 'Pass Bitscore', 'Value': str(rgi.pass_bitscore)},
-        {'Name': 'Predicted DNA Sequence',
-         'Value': str(rgi.predicted_dna)},
-        {'Name': 'Predicted Protein Sequence',
-         'Value': str(rgi.predicted_protein)},
-        {'Name': 'CARD Protein Sequence',
-         'Value': str(rgi.card_protein_sequence)},
-        {'Name': 'Pct Length of CARD Sequence', 'Value': str(
-            rgi.percentage_length_of_reference_sequence)},
-    ]
-
-    rgi_table = RgiTable(rgi_data)
-
-    context = {"sample": sample,
-               "annotation_table": annotation_table,
-               "annotation": annotation,
-               "rgi_table": rgi_table,
-               }
-    response = render(request, "gene_detail.html", context)
-    response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
-    return response
-    # return render(request, "gene_detail.html", context)
+# @permission_required("resistome.view_annotation", login_url='access_denied')
+# def gene_detail_old(request, pk):
+#     rgi = Rgi.objects.get(pk=pk)
+#     annotation = Annotation.objects.get(rgi_set=pk)
+#     sample = annotation.scaffold.sample
+#     annotation_data = [
+#         {'Name': 'Browse', 'Value': mark_safe(str(annotation.jbrowse_link))},
+#         {'Name': 'Gene ID', 'Value': str(annotation.gene)},
+#         {'Name': 'Gene Name', 'Value': str(annotation.gene_name)},
+#         {'Name': 'EC Number', 'Value': str(annotation.ec_number)},
+#         {'Name': 'Product', 'Value': str(annotation.product)},
+#         {'Name': 'Inference', 'Value': str(annotation.inference)},
+#         {'Name': 'Protein Sequence', 'Value': str(annotation.protein_sequence)},
+#     ]
+#
+#     annotation_table = AnnotationTable(annotation_data)
+#
+#     rgi_data = [
+#         {'Name': 'Drug Class', 'Value': str(rgi.drug_class)},
+#         {'Name': 'Resistance Mechanism',
+#          'Value': str(rgi.resistance_mechanism)},
+#         {'Name': 'AMR Gene Family',
+#          'Value': str(rgi.amr_gene_family)},
+#         {'Name': 'Best Hit ARO', 'Value': str(rgi.best_hit_aro)},
+#         {'Name': 'Best Hit Bitscore',
+#          'Value': str(rgi.best_hit_bitscore)},
+#         {'Name': 'Best Identities',
+#          'Value': str(rgi.best_identities)},
+#         {'Name': 'ARO', 'Value': str(rgi.aro)},
+#         {'Name': 'Model Type', 'Value': str(rgi.model_type)},
+#         {'Name': 'SNPs in Best Hit ARO',
+#          'Value': str(rgi.snps_in_best_hit_aro)},
+#         {'Name': 'Other SNPs', 'Value': str(rgi.other_snps)},
+#         {'Name': 'Complete', 'Value': str(rgi.complete)},
+#         {'Name': 'Start Type', 'Value': str(rgi.start_type)},
+#         {'Name': 'RBS Motif', 'Value': str(rgi.rbs_motif)},
+#         {'Name': 'RBS Spacer', 'Value': str(rgi.rbs_spacer)},
+#         {'Name': 'GC Content', 'Value': str(rgi.gc_cont)},
+#         {'Name': 'Cut Off', 'Value': str(rgi.cut_off)},
+#         {'Name': 'Pass Bitscore', 'Value': str(rgi.pass_bitscore)},
+#         {'Name': 'Predicted DNA Sequence',
+#          'Value': str(rgi.predicted_dna)},
+#         {'Name': 'Predicted Protein Sequence',
+#          'Value': str(rgi.predicted_protein)},
+#         {'Name': 'CARD Protein Sequence',
+#          'Value': str(rgi.card_protein_sequence)},
+#         {'Name': 'Pct Length of CARD Sequence', 'Value': str(
+#             rgi.percentage_length_of_reference_sequence)},
+#     ]
+#
+#     rgi_table = RgiTable(rgi_data)
+#
+#     context = {"sample": sample,
+#                "annotation_table": annotation_table,
+#                "annotation": annotation,
+#                "rgi_table": rgi_table,
+#                }
+#     response = render(request, "gene_detail.html", context)
+#     response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
+#     return response

@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     'bootstrap4',
     'cookielaw',
-
+    'crispy_forms',
+    'qurl_templatetag'
 ]
 
 MIDDLEWARE = [
@@ -86,6 +87,10 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    )
 
 WSGI_APPLICATION = 'incredible.wsgi.application'
 
@@ -174,6 +179,7 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SITE_ID = 1
 ACCOUNT_LOGOUT_REDIRECT_URL="https://resistome.cnag.cat/incredble/"
 LOGIN_REDIRECT_URL = 'home'

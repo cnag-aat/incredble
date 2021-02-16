@@ -1,0 +1,24 @@
+AI2598	#fb8072	Comunidad de Madrid
+AI2703	#fb8072	Comunidad de Madrid
+AI2715	#fb8072	Comunidad de Madrid
+AI2721	#fb8072	Comunidad de Madrid
+AI2821	#fb8072	Comunidad de Madrid
+AI2831	#ffed6f	Catalu–a
+AI2834	#fdb462	Comunidad Valenciana
+AI2843	#ffed6f	Catalu–a
+AI2852	#ffed6f	Catalu–a
+AI2853	#ffed6f	Catalu–a
+AI2858	#ffed6f	Catalu–a
+AI2860	#fb8072	Comunidad de Madrid
+AI2890	#fb8072	Comunidad de Madrid
+AI2894	#fb8072	Comunidad de Madrid
+AI2899	#fb8072	Comunidad de Madrid
+AI2928	#fb8072	Comunidad de Madrid
+AI2938	#fccde5	Islas Baleares
+AI2949	#8dd3c7	Asturias
+AI2951	#8dd3c7	Asturias
+AI2959	#ffffb3	Castilla-La Mancha
+AI2963	#ffffb3	Castilla-La Mancha
+AI2978	#ffffb3	Castilla-La Mancha
+AI2981	#fb8072	Comunidad de Madrid
+AI2994	#ffed6f	Catalu–a

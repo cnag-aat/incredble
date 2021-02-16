@@ -1,0 +1,64 @@
+AH0328,#fccde5,Islas Baleares
+AI2613,#bebada,Galicia
+AI2615,#d9d9d9,Castilla y León
+AI2619,#ffed6f,Cataluña
+AI2620,#ffed6f,Cataluña
+AI2624,#fdb462,Comunidad Valenciana
+AI2656,#fccde5,Islas Baleares
+AI2657,#fccde5,Islas Baleares
+AI2658,#fccde5,Islas Baleares
+AI2659,#fccde5,Islas Baleares
+AI2662,#8dd3c7,Asturias
+AI2672,#8dd3c7,Asturias
+AI2673,#8dd3c7,Asturias
+AI2674,#8dd3c7,Asturias
+AI2679,#8dd3c7,Asturias
+AI2683,#8dd3c7,Asturias
+AI2688,#8dd3c7,Asturias
+AI2689,#8dd3c7,Asturias
+AI2694,#8dd3c7,Asturias
+AI2695,#8dd3c7,Asturias
+AI2696,#8dd3c7,Asturias
+AI2697,#8dd3c7,Asturias
+AI2704,#fb8072,Comunidad de Madrid
+AI2705,#bebada,Galicia
+AI2710,#fb8072,Comunidad de Madrid
+AI2716,#ffed6f,Cataluña
+AI2719,#bebada,Galicia
+AI2747,#b3de69,Cantabria
+AI2759,#b3de69,Cantabria
+AI2760,#b3de69,Cantabria
+AI2762,#b3de69,Cantabria
+AI2772,#ffed6f,Cataluña
+AI2774,#ffed6f,Cataluña
+AI2796,#ffed6f,Cataluña
+AI2797,#ffed6f,Cataluña
+AI2798,#ffed6f,Cataluña
+AI2799,#ffed6f,Cataluña
+AI2802,#ffed6f,Cataluña
+AI2804,#ffed6f,Cataluña
+AI2839,#ffed6f,Cataluña
+AI2859,#fb8072,Comunidad de Madrid
+AI2865,#fb8072,Comunidad de Madrid
+AI2866,#fb8072,Comunidad de Madrid
+AI2904,#fb8072,Comunidad de Madrid
+AI2905,#fb8072,Comunidad de Madrid
+AI2915,#fb8072,Comunidad de Madrid
+AI2916,#fb8072,Comunidad de Madrid
+AI2924,#fb8072,Comunidad de Madrid
+AI2936,#fccde5,Islas Baleares
+AI2939,#fccde5,Islas Baleares
+AI2941,#fccde5,Islas Baleares
+AI2950,#8dd3c7,Asturias
+AI2964,#ffffb3,Castilla-La Mancha
+AI2972,#ffffb3,Castilla-La Mancha
+AI2983,#ffffb3,Castilla-La Mancha
+AI2984,#bebada,Galicia
+AI2992,#bc80bd,Navarra
+AI2999,#ffed6f,Cataluña
+AI3013,#ffed6f,Cataluña
+AI3038,#8dd3c7,Asturias
+AI3045,#fb8072,Comunidad de Madrid
+AI3050,#7A7A7A,Unknown
+AN2360,#bebada,Galicia
+AN2364,#bebada,Galicia

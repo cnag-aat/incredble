@@ -4,7 +4,6 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load replace %}
-{% load qurl %}
 
 {% block header %}
 <link rel="stylesheet" href="/static/css/sidebar.css">
@@ -31,13 +30,8 @@
       <button class="btn btn-link" onclick="openNav()">☰ Filters</button>
     </div>
     <div class="col d-flex justify-content-end">
-      <a href="{{ request.get_full_path|replace:'|/$|/?' }}&_export=csv" class="btn btn-primary" role="button">Export CSV</a>
-      &nbsp;
-      {% qurl equest.META.QUERY_STRING page=None as purl %}
-      <a href="{% url 'protein_fasta' %}?{{ purl }}" class="btn btn-primary" role="button" data-toggle="tooltip" data-placement="bottom" title="Limit of 10,000 protein sequences">Export FASTA</a>
-      &nbsp;
-      <a href="{% url 'coord_tsv' %}?{{ purl }}" class="btn btn-primary" role="button" data-toggle="tooltip" data-placement="bottom" title="Export gene coordinates">Export Coordinates</a>
-    </div>
+      <a href="{{ request.get_full_path|replace:'|/$|/?' }}&_export=tsv" class="btn btn-primary" role="button">Export TSV</a>
+      </div>
   </div>
   <div class=" row m-1">
     <div class="col m-2">

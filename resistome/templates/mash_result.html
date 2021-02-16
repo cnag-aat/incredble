@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+{% block page_content %}
+
+<div class="card m-2">
+  <div class="card-header">
+    <h5 class="mb-0">
+      Query <em>{{ genome.description }}</em> is most similar to inCREDble sample <a href={% url 'barcode_detail' barcode=top_sample %}>{{ top_sample }}</a>
+    </h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><strong>Query sequence</strong></th>
+          <th><strong>{{ top_sample }} scaffold</strong></th>
+          <th><strong>Similarity score</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tsc in top_sample_scaffolds %}
+        <tr>
+          <td>{{ tsc.query_seq }}</td>
+          <td><a href={% url 'scaffold_detail' scaffold=tsc.hit %}>{{ tsc.hit }}</a></td>
+          <td>{{ tsc.score }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+  </div>
+</div>
+
+<div class="card m-2">
+  <div class="card-header">
+    <h5 class="mb-0">
+      Most similar inCREDBle scaffold for each individual query sequence
+    </h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><strong>Query sequence</strong></th>
+          <th><strong>Most similar scaffold</strong></th>
+          <th><strong>Similarity score</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tsc in top_sample_scaffolds %}
+        <tr>
+          <td>{{ tsc.query_seq }}</td>
+          <td><a href={% url 'scaffold_detail' scaffold=tsc.hit %}>{{ tsc.hit }}</a></td>
+          <td>{{ tsc.score }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+{% endblock %}
