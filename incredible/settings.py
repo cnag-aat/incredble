@@ -23,7 +23,7 @@ STATIC_URL = '/static/'
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ccy7v8bk5wdn6z6(+cf9&enffwewtjn7hh+4zx*ay_llewzzb)'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -103,7 +103,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'resistome',
         'USER': 'resistome_adm',
-        'PASSWORD': 'res1st0m3!',
+        'PASSWORD': config('DB_PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

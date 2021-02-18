@@ -206,7 +206,9 @@ class Assembly(models.Model):
     max_scaffold_length = models.PositiveIntegerField(null=True, blank=True)
     assembler = models.CharField(max_length=40, null=True, blank=True)
     image = models.ImageField(upload_to='img',null=True, blank=True)
-
+    illumina_coverage = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
+    ont_coverage = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
+    ont_n50 = models.PositiveIntegerField(null=True, blank=True)
     class Meta:
         verbose_name_plural = 'Assemblies'
 
