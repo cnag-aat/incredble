@@ -8,7 +8,7 @@ from resistome.models import *
 
 # argument: Ecoli_genes_classified_prefixed.txt
 parser = argparse.ArgumentParser(
-    description='Add roary groups to inCREDBle RoaryGroup table.')
+    description='Do gene presence/absence analysis for a particular ST.')
 parser.add_argument('sequence_type', metavar='ST',
                     help='the ST to test for enrichment/depletion')
 parser.add_argument('species', metavar='species',
