@@ -387,6 +387,18 @@ class Annotation(models.Model):
     def __str__(self):
         return '%s %s:%s' % (self.scaffold, self.start, self.end)
 
+class RoaryGroup(models.Model):
+    roary_gene = models.CharField(max_length=25, blank=True, null=True, db_index=True, verbose_name="RoaryGroup")
+    roary_core = models.CharField(max_length=15, blank=True, null=True, db_index=True, verbose_name="Core classification", choices=CORE_CHOICES)
+    species = models.ForeignKey(Species, blank=True, null=True, on_delete=models.CASCADE, verbose_name="Genus/species")
+
+    class Meta:
+        indexes = (
+            models.Index(fields=['roary_gene','species','roary_core']),
+        )
+    def __str__(self):
+        return '%s' % (self.roary_gene)
+
 
 RGI_START_TYPE = (
     ("ATG", "ATG"),
