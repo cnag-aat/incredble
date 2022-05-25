@@ -2,6 +2,7 @@
 import django_tables2 as tables
 from django_tables2.utils import A
 from .models import Sample
+from .models import Assembly
 from .models import Scaffold
 from .models import Annotation
 from .models import Centrifuge
@@ -20,12 +21,32 @@ class SampleTable(tables.Table):
     #verified = tables.RelatedLinkColumn(accessor="speciesverification.verified")
 
     class Meta:
+        attrs={"class": "table table-striped table-responsive-sm"}
         model = Sample
         template_name = "django_tables2/bootstrap4.html"
         paginate = {"per_page": 15}
         #attrs = {"class": "table-sm"}
         fields = ('name', 'barcode', 'coruna_code', 'species',
                   'carbapenemase', 'st', 'isolation_location')
+        #fields = ("name", )
+        #id = tables.Column(linkify=True)
+
+class AssemblyTable(tables.Table):
+    sample = tables.Column(linkify=True,verbose_name='Sample name')
+    barcode = tables.Column(verbose_name='Sample barcode',accessor='sample__barcode')
+    st = tables.Column(accessor='mlst.st')
+    carbapenemase = tables.Column(verbose_name='Carbapenemase',accessor='sample__carb_names')
+    ont_coverage = tables.Column(verbose_name='ONT coverage')
+    ont_n50 = tables.Column(verbose_name='ONT read N50')
+    class Meta:
+        attrs={"class": "table table-striped table-responsive-sm"}
+        model = Assembly
+        template_name = "django_tables2/bootstrap4.html"
+        paginate = {"per_page": 15}
+        # leave out the assembler unless we add a new one. They're all the same.
+        fields = ('sample', 'barcode', 'st', 'carbapenemase', 'total_scaffolds',
+                  'circular_scaffolds', 'circularity_ratio', 'assembly_length',
+                   'max_scaffold_length','illumina_coverage','ont_coverage','ont_n50')
         #fields = ("name", )
         #id = tables.Column(linkify=True)
 
@@ -126,6 +147,7 @@ class ScaffoldsTable(tables.Table):
 
     num_genes = tables.TemplateColumn('<a href="{% url \'gene_list\' %}?scaffold={{record.scaffold}}&resistance=Yes">{{record.num_genes}}</a>',empty_values=(), verbose_name='Resistance Genes')
     all_genes = tables.TemplateColumn('<a href="{% url \'gene_list\' %}?scaffold={{record.scaffold}}">{{record.all_genes}}</a>',empty_values=(), verbose_name='All Genes')
+    mash_neighbor_cluster = tables.TemplateColumn('<a href="{% url \'scaffold_list\' %}?mash_neighbor_cluster={{record.mash_neighbor_cluster}}">{{record.mash_neighbor_cluster}}</a>',empty_values=(), verbose_name='MASH neighbor cluster')
     #AnnotationListView resistance=Yes
     #num_genes = tables.TemplateColumn("gene_list_filtScaffold", kwargs={
     #                                  "scaffold": tables.A("scaffold")}, empty_values=(), verbose_name='Resistance Genes')
@@ -239,6 +261,7 @@ class AnnotationListTable(tables.Table):
     #verified = tables.RelatedLinkColumn(accessor="speciesverification.verified")
 
     class Meta:
+        attrs={"class": "table table-striped table-responsive-sm"}
         model = Annotation
         template_name = "django_tables2/bootstrap4.html"
         paginate = {"per_page": 15}
