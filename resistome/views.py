@@ -200,7 +200,8 @@ class SideBar(TemplateView):
     template_name = 'sidebar.html'
 
 
-class BlastView(PermissionRequiredMixin, TemplateView):
+# class BlastView(PermissionRequiredMixin, TemplateView):
+class BlastView(TemplateView):
     # permission_required = "resistome.view_sample"
     # login_url = "access_denied"
     template_name = 'blast.html'
@@ -212,7 +213,8 @@ class BlastView(PermissionRequiredMixin, TemplateView):
         return response
 
 
-class TreeView(PermissionRequiredMixin, TemplateView):
+# class TreeView(PermissionRequiredMixin, TemplateView):
+class TreeView(TemplateView):
     # permission_required = "resistome.view_sample"
     # login_url = "access_denied"
     template_name = 'tree.html'
