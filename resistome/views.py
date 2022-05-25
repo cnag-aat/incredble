@@ -1015,7 +1015,8 @@ def sample_detail(request, pk=None, barcode=None):
     response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
     return response
 
-class SampleListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+# class SampleListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+class SampleListView(ExportMixin, SingleTableMixin, FilterView):
     # permission_required = "resistome.view_sample"
     # login_url = "access_denied"
     model = Sample
@@ -1028,7 +1029,8 @@ class SampleListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, Fil
         response.set_cookie('CRE', 'uq4QeBPJRR9wRUV4')
         return response
 
-class AssemblyListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+# class AssemblyListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+class AssemblyListView(ExportMixin, SingleTableMixin, FilterView):
     # permission_required = "resistome.view_sample"
     # login_url = "access_denied"
     model = Assembly
@@ -1057,7 +1059,8 @@ def ScaffoldView(request, scaffold):
     response = render(request, "scaffold.html", context)
     return render(request, "scaffold.html", context)
 
-class ScaffoldListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+# class ScaffoldListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+class ScaffoldListView(ExportMixin, SingleTableMixin, FilterView):
     # permission_required = "resistome.view_scaffold"
     # login_url = "access_denied"
     model = Scaffold
@@ -1075,8 +1078,8 @@ class ScaffoldListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, F
         response.set_cookie('CRE', 'uq4QeBPJRR9wRUV4')
         return response
 
-
-class AnnotationListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+# class AnnotationListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+class AnnotationListView(ExportMixin, SingleTableMixin, FilterView):
     # permission_required = "resistome.view_annotation"
     # login_url = "access_denied"
     model = Annotation
@@ -1090,7 +1093,8 @@ class AnnotationListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin,
         response.set_cookie('CRE', 'uq4QeBPJRR9wRUV4')
         return response
 
-class AnnotationCoordsView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+# class AnnotationCoordsView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
+class AnnotationCoordsView(ExportMixin, SingleTableMixin, FilterView):
     # permission_required = "resistome.view_annotation"
     # login_url = "access_denied"
     model = Annotation
