@@ -41,30 +41,8 @@ from django.http import HttpResponse
 import subprocess
 import json
 import os, time, sys
-# import rest_framework
-# from rest_framework import generics
-# from rest_framework import viewsets
-# from rest_framework.mixins import ListModelMixin
-# from rest_framework.viewsets import GenericViewSet
-# #from rest_framework import GenericViewSet
-#
-#
-# class ExportListViewSetMixin(ExportMixin, ListModelMixin, GenericViewSet):
-#
-#     def list(self, request, *args, **kwargs):
-#         queryset = self.filter_queryset(queryset=self.get_queryset())
-#
-#         if self.action == 'export_list':
-#             serializer = self.get_serializer(queryset, many=True)
-#             return Response(serializer.data)
-#
-#         return super(ExportListViewSetMixin, self).list(request, *args, **kwargs)
-#
-#     @action(detail=False, methods=['get'], url_path='export')
-#     def export_list(self, request):
-#         return super().export_response()
 
-@permission_required("resistome.view_sample", login_url='access_denied')
+# @permission_required("resistome.view_sample", login_url='access_denied')
 def model_form_upload(request):
     if request.method == 'POST':
         form = GenomeUploadForm(request.POST, request.FILES)
@@ -90,7 +68,7 @@ def model_form_upload(request):
         'form': form
     })
 
-@permission_required("resistome.view_sample", login_url='access_denied')
+# @permission_required("resistome.view_sample", login_url='access_denied')
 def mash_result(request, pk=None):
     context = {"result": "No hits"}
     if pk:
@@ -208,8 +186,8 @@ class SideBar(TemplateView):
 
 
 class BlastView(PermissionRequiredMixin, TemplateView):
-    permission_required = "resistome.view_sample"
-    login_url = "access_denied"
+    # permission_required = "resistome.view_sample"
+    # login_url = "access_denied"
     template_name = 'blast.html'
 
     def render_to_response(self, context, **response_kwargs):
@@ -220,21 +198,16 @@ class BlastView(PermissionRequiredMixin, TemplateView):
 
 
 class TreeView(PermissionRequiredMixin, TemplateView):
-    permission_required = "resistome.view_sample"
-    login_url = "access_denied"
+    # permission_required = "resistome.view_sample"
+    # login_url = "access_denied"
     template_name = 'tree.html'
 
 
 class AccessDeniedView(TemplateView):
     template_name = 'denied.html'
 
-
-
-@permission_required("resistome.view_sample", login_url='access_denied')
+# @permission_required("resistome.view_sample", login_url='access_denied')
 def spain_map_filter(request):
-
-    #    df = pd.read_csv('/Users/talioto/Documents/projects/CRE/server-dev/incredible/incredible/static/isolation_locations_test.csv')
-    #    df.head()
 
     colors = ['rgb(189,189,189)', 'rgb(218, 30, 55)', 'rgb(189, 31, 54)', 'rgb(167, 30, 52)', 'rgb(133, 24, 42)', 'rgb(100, 18, 32)',
               'rgb(55, 119, 255)', 'rgb(251, 139, 36)', 'rgb(42, 157, 143)', 'rgb(102, 46, 155)', 'rgb(147, 129, 255)', 'rgb(255, 216, 190)']
@@ -281,9 +254,6 @@ def spain_map_filter(request):
                     opacity=0.75
                 )))
 
-    #df_all = df.query('Species == "All"')
-    # fig['data'][0].update(mode='markers+text', textposition='bottom center',
-    #              text=df_all['Location'] + ": " + df_all['Value'].map('{:.0f}'.format).astype(str)) #+' '+ df_all['Location']
     fig.update_layout(
         #title=go.layout.Title(
         #    text='CRE samples collected and sequenced in Spain by CNAG in 2019'),
@@ -307,13 +277,6 @@ def spain_map_filter(request):
         width=800
     )
 
-    # def do_click(trace, points, state):
-    #     if points.point_inds:
-    #         ind = points.point_inds[0]
-    #         url = 'https://denovo.cnag.cat:8080/samples/' # df.link.iloc[ind]
-    #         webbrowser.open_new_tab(url)
-
-    # fig.on_click(do_click)
 
     plot_div = plot(fig, output_type='div', include_plotlyjs=False)
     #context['plot'] = plot_div
@@ -325,7 +288,7 @@ def spain_map_filter(request):
     return render(request, "map_filter.html", context)
 
 
-@permission_required("resistome.view_sample", login_url='access_denied')
+# @permission_required("resistome.view_sample", login_url='access_denied')
 def sample_detail(request, pk=None, barcode=None):
     if pk:
         sample = Sample.objects.get(pk=pk)
@@ -453,8 +416,8 @@ def sample_detail(request, pk=None, barcode=None):
     return response
 
 class SampleListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
-    permission_required = "resistome.view_sample"
-    login_url = "access_denied"
+    # permission_required = "resistome.view_sample"
+    # login_url = "access_denied"
     model = Sample
     table_class = SampleTable
     template_name = 'samples.html'
@@ -466,7 +429,7 @@ class SampleListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, Fil
         return response
 
 
-@permission_required("resistome.view_scaffold", login_url='access_denied')
+# @permission_required("resistome.view_scaffold", login_url='access_denied')
 def ScaffoldView(request, scaffold):
     scaff = Scaffold.objects.filter(scaffold=scaffold).annotate(num_genes=Count('gene_set', filter=(Q(gene_set__rgi='Yes') | Q(gene_set__amrf='Yes'))),all_genes=Count('gene_set'))
     sample = scaff[0].sample
@@ -482,8 +445,8 @@ def ScaffoldView(request, scaffold):
     return render(request, "scaffold.html", context)
 
 class ScaffoldListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
-    permission_required = "resistome.view_scaffold"
-    login_url = "access_denied"
+    # permission_required = "resistome.view_scaffold"
+    # login_url = "access_denied"
     model = Scaffold
     table_class = ScaffoldsTable
     template_name = 'scaffold_list.html'
@@ -501,8 +464,8 @@ class ScaffoldListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, F
 
 
 class AnnotationListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
-    permission_required = "resistome.view_annotation"
-    login_url = "access_denied"
+    # permission_required = "resistome.view_annotation"
+    # login_url = "access_denied"
     model = Annotation
     table_class = AnnotationListTable
     template_name = 'annotation.html'
@@ -515,8 +478,8 @@ class AnnotationListView(PermissionRequiredMixin, ExportMixin, SingleTableMixin,
         return response
 
 class AnnotationCoordsView(PermissionRequiredMixin, ExportMixin, SingleTableMixin, FilterView):
-    permission_required = "resistome.view_annotation"
-    login_url = "access_denied"
+    # permission_required = "resistome.view_annotation"
+    # login_url = "access_denied"
     model = Annotation
     table_class = AnnotationCoordsTable
     template_name = 'coords.html'
@@ -529,7 +492,7 @@ class AnnotationCoordsView(PermissionRequiredMixin, ExportMixin, SingleTableMixi
         return response
 
 
-@permission_required("resistome.view_sample", login_url='access_denied')
+# @permission_required("resistome.view_sample", login_url='access_denied')
 def AnnotationFastaView(request):
     genes = Annotation.objects.all()
     for filter_field in request.GET.keys():
@@ -564,7 +527,7 @@ def AnnotationFastaView(request):
 
     return HttpResponse(fasta, content_type="text/plain")
 
-@permission_required("resistome.view_sample", login_url='access_denied')
+# @permission_required("resistome.view_sample", login_url='access_denied')
 def AnnotationCoordView(request):
     genes = Annotation.objects.all()
     for filter_field in request.GET.keys():
@@ -594,38 +557,9 @@ def AnnotationCoordView(request):
 
 
     return HttpResponse(tsv, content_type="text/plain")
-# @permission_required("resistome.view_sample", login_url='access_denied')
-# def ScaffoldFastaView(request):
-#     scaffs = Scaffold.objects.all()
-#     for filter_field in request.GET.keys():
-#         if request.GET.get(filter_field):
-#             ff = filter_field
-#             if (ff == 'st'):
-#                 ff = 'assembly__mlst__st'
-#                 scaffs = scaffs.filter(**{ff: request.GET.get(filter_field)})
-#             else:
-#                 scaffs = scaffs.filter(**{ff: request.GET.get(filter_field)})
-#     fasta = ''
-#     count = 1
-#     def insert_newlines(string, every=80):
-#         return '\n'.join(string[i:i+every] for i in range(0, len(string), every))
-#     def xstr(s):
-#         if s is None:
-#             return ''
-#         return str(s)
-#
-#     for s in scaffs[:10000]:
-#         mlst = MLST.objects.filter(assembly=s.assembly)
-#         seq = insert_newlines( GET SEQUENCE SOMEHOW )
-#         fasta += ">"+s.scaffold  +"\n" + seq + "\n"
-#         count+=1
-#         if count>10000:
-#             break
-#
-#     return HttpResponse(fasta, content_type="text/plain")
 
 
-@permission_required("resistome.view_annotation", login_url='access_denied')
+# @permission_required("resistome.view_annotation", login_url='access_denied')
 def gene_detail(request, pk=None, gene=None):
     if pk:
         annotation = Annotation.objects.get(pk=pk)
@@ -745,65 +679,3 @@ def gene_detail(request, pk=None, gene=None):
     response = render(request, "gene_detail.html", context)
     response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
     return response
-
-
-# @permission_required("resistome.view_annotation", login_url='access_denied')
-# def gene_detail_old(request, pk):
-#     rgi = Rgi.objects.get(pk=pk)
-#     annotation = Annotation.objects.get(rgi_set=pk)
-#     sample = annotation.scaffold.sample
-#     annotation_data = [
-#         {'Name': 'Browse', 'Value': mark_safe(str(annotation.jbrowse_link))},
-#         {'Name': 'Gene ID', 'Value': str(annotation.gene)},
-#         {'Name': 'Gene Name', 'Value': str(annotation.gene_name)},
-#         {'Name': 'EC Number', 'Value': str(annotation.ec_number)},
-#         {'Name': 'Product', 'Value': str(annotation.product)},
-#         {'Name': 'Inference', 'Value': str(annotation.inference)},
-#         {'Name': 'Protein Sequence', 'Value': str(annotation.protein_sequence)},
-#     ]
-#
-#     annotation_table = AnnotationTable(annotation_data)
-#
-#     rgi_data = [
-#         {'Name': 'Drug Class', 'Value': str(rgi.drug_class)},
-#         {'Name': 'Resistance Mechanism',
-#          'Value': str(rgi.resistance_mechanism)},
-#         {'Name': 'AMR Gene Family',
-#          'Value': str(rgi.amr_gene_family)},
-#         {'Name': 'Best Hit ARO', 'Value': str(rgi.best_hit_aro)},
-#         {'Name': 'Best Hit Bitscore',
-#          'Value': str(rgi.best_hit_bitscore)},
-#         {'Name': 'Best Identities',
-#          'Value': str(rgi.best_identities)},
-#         {'Name': 'ARO', 'Value': str(rgi.aro)},
-#         {'Name': 'Model Type', 'Value': str(rgi.model_type)},
-#         {'Name': 'SNPs in Best Hit ARO',
-#          'Value': str(rgi.snps_in_best_hit_aro)},
-#         {'Name': 'Other SNPs', 'Value': str(rgi.other_snps)},
-#         {'Name': 'Complete', 'Value': str(rgi.complete)},
-#         {'Name': 'Start Type', 'Value': str(rgi.start_type)},
-#         {'Name': 'RBS Motif', 'Value': str(rgi.rbs_motif)},
-#         {'Name': 'RBS Spacer', 'Value': str(rgi.rbs_spacer)},
-#         {'Name': 'GC Content', 'Value': str(rgi.gc_cont)},
-#         {'Name': 'Cut Off', 'Value': str(rgi.cut_off)},
-#         {'Name': 'Pass Bitscore', 'Value': str(rgi.pass_bitscore)},
-#         {'Name': 'Predicted DNA Sequence',
-#          'Value': str(rgi.predicted_dna)},
-#         {'Name': 'Predicted Protein Sequence',
-#          'Value': str(rgi.predicted_protein)},
-#         {'Name': 'CARD Protein Sequence',
-#          'Value': str(rgi.card_protein_sequence)},
-#         {'Name': 'Pct Length of CARD Sequence', 'Value': str(
-#             rgi.percentage_length_of_reference_sequence)},
-#     ]
-#
-#     rgi_table = RgiTable(rgi_data)
-#
-#     context = {"sample": sample,
-#                "annotation_table": annotation_table,
-#                "annotation": annotation,
-#                "rgi_table": rgi_table,
-#                }
-#     response = render(request, "gene_detail.html", context)
-#     response.set_cookie(key='CRE', value='uq4QeBPJRR9wRUV4')
-#     return response
