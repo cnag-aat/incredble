@@ -1,0 +1,462 @@
+Genomes	Community
+AH0325	Cataluña
+AH0326	Cataluña
+AH0327	Cataluña
+AH0328	Islas Baleares
+AH0329	Comunidad de Madrid
+AH0330	Asturias
+AH0331	Castilla-La Mancha
+AI2583	Comunidad de Madrid
+AI2584	Comunidad de Madrid
+AI2585	Comunidad de Madrid
+AI2586	Comunidad de Madrid
+AI2587	Comunidad de Madrid
+AI2588	Comunidad de Madrid
+AI2589	Comunidad de Madrid
+AI2590	Comunidad de Madrid
+AI2591	Comunidad de Madrid
+AI2592	Comunidad de Madrid
+AI2593	Comunidad de Madrid
+AI2594	Comunidad de Madrid
+AI2595	Comunidad de Madrid
+AI2596	Comunidad de Madrid
+AI2597	Comunidad de Madrid
+AI2598	Comunidad de Madrid
+AI2599	Comunidad de Madrid
+AI2600	Comunidad de Madrid
+AI2601	Comunidad de Madrid
+AI2602	Comunidad de Madrid
+AI2603	Comunidad de Madrid
+AI2604	Comunidad de Madrid
+AI2605	Comunidad de Madrid
+AI2606	Comunidad de Madrid
+AI2607	Comunidad de Madrid
+AI2608	Comunidad de Madrid
+AI2760	Cantabria
+AI2610	Comunidad de Madrid
+AI2612	Galicia
+AI2609	Comunidad de Madrid
+AI2614	Castilla y León
+AI2613	Galicia
+AI2615	Castilla y León
+AI2616	Castilla y León
+AI2617	Castilla y León
+AI2618	Castilla y León
+AI2619	Cataluña
+AI2621	Cataluña
+AI2622	Cataluña
+AI2623	Comunidad Valenciana
+AI2624	Comunidad Valenciana
+AI2620	Cataluña
+AI2627	Andalucía
+AI2628	Andalucía
+AI2629	Andalucía
+AI2630	Andalucía
+AI2631	Andalucía
+AI2632	Andalucía
+AI2633	Andalucía
+AI2634	Andalucía
+AI2635	Cataluña
+AI2636	Cataluña
+AI2637	Cataluña
+AI2638	Cataluña
+AI2639	Cataluña
+AI2640	Cataluña
+AI2641	Cataluña
+AI2642	Comunidad de Madrid
+AI2643	Comunidad de Madrid
+AI2644	Comunidad de Madrid
+AI2645	Comunidad de Madrid
+AI2646	Comunidad de Madrid
+AI2647	Comunidad de Madrid
+AI2648	Comunidad de Madrid
+AI2649	Comunidad de Madrid
+AI2650	Comunidad de Madrid
+AI2651	Comunidad de Madrid
+AI2652	Comunidad de Madrid
+AI2653	Comunidad de Madrid
+AI2654	Comunidad de Madrid
+AI2655	Comunidad de Madrid
+AI2626	Andalucía
+AI2656	Islas Baleares
+AI2657	Islas Baleares
+AI2658	Islas Baleares
+AI2659	Islas Baleares
+AI2661	Asturias
+AI2662	Asturias
+AI2664	Asturias
+AI2665	Asturias
+AI2666	Asturias
+AI2667	Asturias
+AI2668	Asturias
+AI2669	Asturias
+AI2670	Asturias
+AI2671	Asturias
+AI2672	Asturias
+AI2673	Asturias
+AI2674	Asturias
+AI2675	Asturias
+AI2676	Asturias
+AI2677	Asturias
+AI2678	Asturias
+AI2679	Asturias
+AI2680	Asturias
+AI2681	Asturias
+AI2682	Asturias
+AI2683	Asturias
+AI2686	Asturias
+AI2687	Asturias
+AI2688	Asturias
+AI2689	Asturias
+AI2691	Asturias
+AI2693	Asturias
+AI2694	Asturias
+AI2695	Asturias
+AI2696	Asturias
+AI2697	Asturias
+AI2698	Asturias
+AI2699	Asturias
+AI2700	Galicia
+AI2701	Comunidad de Madrid
+AI2702	Comunidad de Madrid
+AI2703	Comunidad de Madrid
+AI2704	Comunidad de Madrid
+AI2705	Galicia
+AI2706	Castilla-La Mancha
+AI2707	Castilla-La Mancha
+AI2709	Comunidad de Madrid
+AI2710	Comunidad de Madrid
+AI2711	Galicia
+AI2713	Comunidad de Madrid
+AI2714	Castilla-La Mancha
+AI2715	Comunidad de Madrid
+AI2716	Cataluña
+AI2717	Galicia
+AI2719	Galicia
+AI2721	Comunidad de Madrid
+AI2722	Cataluña
+AI2723	Andalucía
+AI2739	Cantabria
+AI2740	Cantabria
+AI2741	Cantabria
+AI2742	Cantabria
+AI2743	Cantabria
+AI2744	Cantabria
+AI2745	Cantabria
+AI2746	Cantabria
+AI2747	Cantabria
+AI2748	Cantabria
+AI2749	Cantabria
+AI2750	Cantabria
+AI2751	Cantabria
+AI2752	Cantabria
+AI2753	Cantabria
+AI2754	Cantabria
+AI2755	Cantabria
+AI2756	Cantabria
+AI2757	Cantabria
+AI2660	Islas Baleares
+AI2759	Cantabria
+AI2761	Cantabria
+AI2762	Cantabria
+AI2763	Cataluña
+AI2764	Cataluña
+AI2765	Cataluña
+AI2766	Cataluña
+AI2767	Cataluña
+AI2768	Cataluña
+AI2769	Cataluña
+AI2770	Cataluña
+AI2771	Cataluña
+AI2772	Cataluña
+AI2773	Cataluña
+AI2774	Cataluña
+AI2775	Cataluña
+AI2776	Comunidad Valenciana
+AI2777	Comunidad Valenciana
+AI2778	Comunidad Valenciana
+AI2779	Comunidad Valenciana
+AI2780	Comunidad Valenciana
+AI2781	Comunidad Valenciana
+AI2782	Comunidad Valenciana
+AI2784	Comunidad Valenciana
+AI2785	Comunidad Valenciana
+AI2786	Comunidad Valenciana
+AI2787	Comunidad Valenciana
+AI2789	Comunidad Valenciana
+AI2790	Comunidad Valenciana
+AI2791	Comunidad Valenciana
+AI2792	Comunidad Valenciana
+AI2793	Comunidad Valenciana
+AI2794	Comunidad Valenciana
+AI2795	Cataluña
+AI2796	Cataluña
+AI2797	Cataluña
+AI2798	Cataluña
+AI2799	Cataluña
+AI2800	Cataluña
+AI2801	Cataluña
+AI2802	Cataluña
+AI2803	Cataluña
+AI2804	Cataluña
+AI2805	Andalucía
+AI2806	Andalucía
+AI2807	Andalucía
+AI2808	Andalucía
+AI2809	Andalucía
+AI2810	Andalucía
+AI2811	Andalucía
+AI2812	Andalucía
+AI2813	Andalucía
+AI2814	Andalucía
+AI2815	Andalucía
+AI2816	Andalucía
+AI2817	Andalucía
+AI2818	Comunidad de Madrid
+AI2819	Comunidad de Madrid
+AI2820	Comunidad de Madrid
+AI2821	Comunidad de Madrid
+AI2822	Comunidad de Madrid
+AI2823	Comunidad de Madrid
+AI2824	Comunidad de Madrid
+AI2825	Comunidad de Madrid
+AI2826	Comunidad de Madrid
+AI2828	Aragón
+AI2829	Galicia
+AI2830	Galicia
+AI2831	Cataluña
+AI2834	Comunidad Valenciana
+AI2835	Andalucía
+AI2836	Andalucía
+AI2837	Andalucía
+AI2838	Cataluña
+AI2839	Cataluña
+AI2840	Cataluña
+AI2841	Cataluña
+AI2842	Cataluña
+AI2843	Cataluña
+AI2844	Cataluña
+AI2846	Cataluña
+AI2847	Cataluña
+AI2848	Cataluña
+AI2849	Cataluña
+AI2850	Cataluña
+AI2851	Cataluña
+AI2852	Cataluña
+AI2853	Cataluña
+AI2854	Cataluña
+AI2855	Cataluña
+AI2856	Cataluña
+AI2857	Cataluña
+AI2858	Cataluña
+AI2859	Comunidad de Madrid
+AI2860	Comunidad de Madrid
+AI2861	Comunidad de Madrid
+AI2862	Comunidad de Madrid
+AI2863	Comunidad de Madrid
+AI2865	Comunidad de Madrid
+AI2866	Comunidad de Madrid
+AI2867	Comunidad de Madrid
+AI2868	Comunidad de Madrid
+AI2870	Comunidad de Madrid
+AI2871	Comunidad de Madrid
+AI2872	Comunidad de Madrid
+AI2873	Comunidad de Madrid
+AI2874	Comunidad de Madrid
+AI2875	Comunidad de Madrid
+AI2876	Comunidad de Madrid
+AI2877	Comunidad de Madrid
+AI2878	Comunidad de Madrid
+AI2879	Comunidad de Madrid
+AI2880	Comunidad de Madrid
+AI2882	Comunidad de Madrid
+AI2883	Comunidad de Madrid
+AI2884	Comunidad de Madrid
+AI2885	Comunidad de Madrid
+AI2886	Comunidad de Madrid
+AI2887	Comunidad de Madrid
+AI2888	Comunidad de Madrid
+AI2889	Comunidad de Madrid
+AI2890	Comunidad de Madrid
+AI2891	Comunidad de Madrid
+AI2892	Comunidad de Madrid
+AI2893	Comunidad de Madrid
+AI2894	Comunidad de Madrid
+AI2895	Comunidad de Madrid
+AI2896	Comunidad de Madrid
+AI2897	Comunidad de Madrid
+AI2898	Comunidad de Madrid
+AI2899	Comunidad de Madrid
+AI2900	Comunidad de Madrid
+AI2901	Comunidad de Madrid
+AI2902	Comunidad de Madrid
+AI2903	Andalucía
+AI2904	Comunidad de Madrid
+AI2905	Comunidad de Madrid
+AI2906	Comunidad de Madrid
+AI2907	Comunidad de Madrid
+AI2908	Comunidad de Madrid
+AI2909	Comunidad de Madrid
+AI2910	Comunidad de Madrid
+AI2911	Comunidad de Madrid
+AI2912	Comunidad de Madrid
+AI2913	Comunidad de Madrid
+AI2914	Comunidad de Madrid
+AI2915	Comunidad de Madrid
+AI2916	Comunidad de Madrid
+AI2917	Comunidad de Madrid
+AI2918	Comunidad de Madrid
+AI2919	Comunidad de Madrid
+AI2920	Comunidad de Madrid
+AI2921	Comunidad de Madrid
+AI2922	Comunidad de Madrid
+AI2923	Comunidad de Madrid
+AI2924	Comunidad de Madrid
+AI2925	Comunidad de Madrid
+AI2926	Comunidad de Madrid
+AI2927	Comunidad de Madrid
+AI2928	Comunidad de Madrid
+AI2929	Comunidad de Madrid
+AI2930	Comunidad de Madrid
+AI2931	Comunidad de Madrid
+AI2932	Comunidad de Madrid
+AI2934	Andalucía
+AI2935	Andalucía
+AI2936	Islas Baleares
+AI2937	Islas Baleares
+AI2938	Islas Baleares
+AI2939	Islas Baleares
+AI2940	Islas Baleares
+AI2941	Islas Baleares
+AI2942	Asturias
+AI2943	Asturias
+AI2945	Asturias
+AI2946	Asturias
+AI2949	Asturias
+AI2950	Asturias
+AI2951	Asturias
+AI2952	Asturias
+AI2953	Asturias
+AI2954	Castilla-La Mancha
+AI2957	Castilla-La Mancha
+AI2958	Castilla-La Mancha
+AI2959	Castilla-La Mancha
+AI2960	Castilla-La Mancha
+AI2961	Castilla-La Mancha
+AI2962	Castilla-La Mancha
+AI2963	Castilla-La Mancha
+AI2964	Castilla-La Mancha
+AI2965	Castilla-La Mancha
+AI2966	Castilla-La Mancha
+AI2967	Castilla-La Mancha
+AI2968	Castilla-La Mancha
+AI2969	Castilla-La Mancha
+AI2970	Castilla-La Mancha
+AI2971	Castilla-La Mancha
+AI2972	Castilla-La Mancha
+AI2973	Castilla-La Mancha
+AI2974	Castilla-La Mancha
+AI2975	Castilla-La Mancha
+AI2976	Castilla-La Mancha
+AI2977	Castilla-La Mancha
+AI2978	Castilla-La Mancha
+AI2979	Galicia
+AI2980	Galicia
+AI2981	Comunidad de Madrid
+AI2982	Galicia
+AI2983	Castilla-La Mancha
+AI2984	Galicia
+AI2985	Galicia
+AI2989	Cantabria
+AI2991	Navarra
+AI2992	Navarra
+AI2993	Cataluña
+AI2994	Cataluña
+AI2996	Cataluña
+AI2998	Cataluña
+AI2999	Cataluña
+AI3000	Cataluña
+AI3001	Comunidad Valenciana
+AI3002	Comunidad Valenciana
+AI3003	Comunidad Valenciana
+AI3004	Comunidad Valenciana
+AI3006	Comunidad Valenciana
+AI3007	Comunidad Valenciana
+AI3008	Comunidad Valenciana
+AI3009	Comunidad Valenciana
+AI3010	Cataluña
+AI3011	Cataluña
+AI3012	Cataluña
+AI3013	Cataluña
+AI3018	Comunidad de Madrid
+AI3021	Comunidad Valenciana
+AI3023	Comunidad de Madrid
+AI3024	Comunidad de Madrid
+AI3025	Comunidad de Madrid
+AI3027	Andalucía
+AI3028	Comunidad de Madrid
+AI3030	Comunidad de Madrid
+AI3031	Asturias
+AI3034	Asturias
+AI3035	Asturias
+AI3036	Asturias
+AI3037	Asturias
+AI3038	Asturias
+AI3039	Castilla-La Mancha
+AI3040	Castilla-La Mancha
+AI3041	Castilla-La Mancha
+AI3042	Castilla-La Mancha
+AI3043	Comunidad de Madrid
+AI3044	Comunidad de Madrid
+AI3045	Comunidad de Madrid
+AI3046	Galicia
+AI3047	Castilla-La Mancha
+AI3048	Castilla-La Mancha
+AI3049	Comunidad de Madrid
+AI3050	
+AI3051	
+AI3052	
+AI3053	
+AI3054	
+AI3055	Castilla-La Mancha
+AI3056	
+AI3057	Comunidad de Madrid
+AI3058	Comunidad de Madrid
+AI3059	Comunidad de Madrid
+AI3060	Galicia
+AI3062	Cantabria
+AI3063	Cantabria
+AI3064	Navarra
+AI3065	Cataluña
+AI3067	Comunidad Valenciana
+AI3069	Comunidad Valenciana
+AI3070	Andalucía
+AI3071	Andalucía
+AN2335	Comunidad de Madrid
+AN2336	Asturias
+AN2337	Asturias
+AN2338	
+AN2339	
+AN2340	Comunidad de Madrid
+AN2341	Cantabria
+AN2342	Galicia
+AN2343	Galicia
+AN2344	Galicia
+AN2345	Galicia
+AN2346	Galicia
+AN2347	Galicia
+AN2349	Ceuta
+AN2350	Galicia
+AN2351	Galicia
+AN2352	Galicia
+AN2353	Galicia
+AN2354	Galicia
+AN2355	Galicia
+AN2356	Galicia
+AN2357	Galicia
+AN2358	Galicia
+AN2360	Galicia
+AN2361	Galicia
+AN2362	Galicia
+AN2363	Galicia
+AN2364	Galicia

@@ -7,6 +7,9 @@
       type="image/png"
       href="https://denovo.cnag.cat:8080/static/favicon.ico">
 <link rel="stylesheet" href="/static/css/sidebar.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 {% endblock %}
 <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -15,12 +18,14 @@
 
 <!-- Our Custom CSS -->
 <link rel="stylesheet" href="/static/css/sidebar.css">
+<!-- <link rel="stylesheet" href="/static/css/loader.css"> -->
 <!-- Scrollbar Custom CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 <!-- Font Awesome JS -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0636c1cb0c.js" crossorigin="anonymous"></script>
 
 <style>
 body {
@@ -47,20 +52,26 @@ body {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'sample_list' %}">Samples</a>
+          <a class="nav-link" id="samplelink" href="{% url 'sample_list' %}"><i id=samplespinner class="fas fa-cog fa-spin mr-1" style="display:none"></i>Samples</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'scaffold_list' %}">Scaffolds</a>
+          <a class="nav-link" id="assemblylink" href="{% url 'assembly_list' %}"><i id=assemblyspinner class="fas fa-cog fa-spin mr-1" style="display:none"></i>Assemblies</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'gene_list' %}">Genes</a>
+          <a class="nav-link" id="scaffoldlink" href="{% url 'scaffold_list' %}"><i id=scaffoldspinner class="fas fa-cog fa-spin mr-1" style="display:none"></i>Scaffolds</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'spain_map_filter' %}">Map</a>
+          <a class="nav-link" id="genelink" href="{% url 'gene_list' %}"><i id=genespinner class="fas fa-cog fa-spin mr-1" style="display:none"></i>Genes</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'charts' %}">Charts</a>
+          <a class="nav-link" id="maplink" href="{% url 'spain_map_filter' %}"><i id=mapspinner class="fas fa-cog fa-spin mr-1" style="display:none"></i>Map</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" id="chartlink" href="{% url 'charts' %}"><i id=chartspinner class="fas fa-cog fa-spin mr-1" style="display:none"></i>Charts</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" id="anilink" href="{% url 'ani_networks' %}"><i id=anispinner class="fas fa-cog fa-spin mr-1" style="display:none"></i>ANI</a>
+          </li>
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'blast' %}">BLAST</a>
         </li>
@@ -84,7 +95,6 @@ body {
           <a class="nav-link" href="{% url 'account_login' %}">Login/Register</a>
           </li>
           {% endif %}
-        </li>
       </ul>
     </div>
   </div>
@@ -106,9 +116,6 @@ body {
   {% block page_content %}{% endblock %}
 </div>
 </div>
-<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
 {% if messages %}
 <div class="row">
   <div class="col-md-12">
@@ -117,7 +124,7 @@ body {
       <h5 class="card-title"><strong>Messages</strong></h5>
       <ul>
         {% for message in messages %}
-        <li>{{message}}</li>
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
       </ul>
       </div>
@@ -174,7 +181,6 @@ body {
  <!-- jQuery Custom Scroller CDN -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         $("#sidebar").mCustomScrollbar({
@@ -193,4 +199,38 @@ body {
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
     });
+
+    function spinner() {
+    	// const spinnerDisplayer = document.querySelector('.spinner-displayer');
+    	const anilink = document.getElementById('anilink');
+    	anilink.addEventListener('click', () => {
+        $("#anispinner").show();
+      })
+      const samplelink = document.getElementById('samplelink');
+      samplelink.addEventListener('click', () => {
+        $("#samplespinner").show();
+      })
+      const assemblylink = document.getElementById('assemblylink');
+      assemblylink.addEventListener('click', () => {
+        $("#assemblyspinner").show();
+      })
+      const scaffoldlink = document.getElementById('scaffoldlink');
+      scaffoldlink.addEventListener('click', () => {
+        $("#scaffoldspinner").show();
+      })
+      const genelink = document.getElementById('genelink');
+      genelink.addEventListener('click', () => {
+        $("#genespinner").show();
+      })
+      const maplink = document.getElementById('maplink');
+      maplink.addEventListener('click', () => {
+        $("#mapspinner").show();
+      })
+      const chartlink = document.getElementById('chartlink');
+      chartlink.addEventListener('click', () => {
+        $("#chartspinner").show();
+      })
+    }
+
+    spinner();
 </script>

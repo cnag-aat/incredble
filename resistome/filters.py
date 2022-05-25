@@ -12,6 +12,7 @@ from resistome.models import AmrfClass
 from resistome.models import AmrfElementType
 from resistome.models import ResistanceMechanism
 from resistome.models import Species
+from resistome.models import Carbapenemase
 from django import forms
 from django.db.models import Q
 
@@ -39,14 +40,19 @@ class DynamicChoiceFilter(DynamicChoiceMixin, django_filters.ChoiceFilter):
     pass
 
 class ScaffoldFilter(django_filters.FilterSet):
-
     st = django_filters.CharFilter(field_name='assembly__mlst__st',label='Sequence Type')
+    #minscafflength = django_filters.NumberFilter(field_name='scaffold_length',label='Minimum scaffold length')
+    #maxscafflength = django_filters.NumberFilter(field_name='scaffold_length',label='Maximum scaffold length')
+    scafflengthrange = django_filters.RangeFilter(field_name='scaffold_length',label='Scaffold length range')
     class Meta:
         model = Scaffold
         fields = {'sample':['exact'],
                   'st':['exact'],
                   'scaffold':['exact'],
-                  'scaffold_length':['gt','lt'],
+                  #'scaffold_length':['gt','lt'],
+                  #'minscafflength':['gt'],
+                  #'maxscafflength':['lt'],
+                  'scafflengthrange':['overlap'],
                   'circular':['exact'],
                   'predicted_mobility':['exact'],
                   'relaxase_type':['exact'],
@@ -59,9 +65,126 @@ class SampleFilter(django_filters.FilterSet):
     st = django_filters.CharFilter(field_name='assembly__mlst__st',label='Sequence Type')
     gene_symbol = django_filters.CharFilter(field_name='assembly__scaffold__gene_set__gene_name',label='RGI gene Symbol')
     amrf_set_gene_symbol = django_filters.CharFilter(field_name='assembly__scaffold__gene_set__amrf_set__gene_symbol',label='AMRF gene symbol',lookup_expr='icontains')
+    RESISTANCE_CHOICES = (
+        ('PIPER', 'PIPER'),
+        ('PT', 'P/T'),
+        ('CTX', 'CTX'),
+        ('CAZ', 'CAZ'),
+        ('CAZ_AVI', 'CAZ-AVI'),
+        ('CEF', 'CEF'),
+        ('AZT', 'AZT'),
+        ('MEM', 'MEM'),
+        ('IMI', 'IMI'),
+        ('IMI_RELE', 'IMI-RELE'),
+        ('ERT', 'ERT'),
+        ('FOSFO', 'FOSFO'),
+        ('GENTA', 'GENTA'),
+        ('TOBRA', 'TOBRA'),
+        ('AMK', 'AMK'),
+        ('CIP', 'CIP'),
+        ('COLIS', 'COLIS'),
+    )
+
+    resistance = django_filters.MultipleChoiceFilter(field_name='resistance',label='Resistant to',method='drug_resistance_filter',choices=RESISTANCE_CHOICES,null_label=None)
     class Meta:
         model = Sample
-        fields = {'name':['exact'],'barcode':['exact'],'species':['exact'], 'carbapenemase':['exact'],'biological_sample_of_isolation':['exact'],'collection':['exact'],'isolation_location':['exact'],'acquisition':['exact'],'st':['exact'],'amrf_set_gene_symbol':['icontains'],'gene_symbol':['icontains'],'patient_data_age':['gt','lt'],'patient_data_sex':['exact']}
+        fields = {'name':['exact'],'barcode':['exact'],'species':['exact'], 'carbapenemase':['exact'],'resistance':['exact'],'biological_sample_of_isolation':['exact'],'collection':['exact'],'isolation_location':['exact'],'acquisition':['exact'],'st':['exact'],'amrf_set_gene_symbol':['icontains'],'gene_symbol':['icontains'],'patient_data_age':['gt','lt'],'patient_data_sex':['exact']}
+    def drug_resistance_filter(self, queryset, name, value):
+        for drug in value:
+            if drug=='PIPER':
+                queryset = queryset.filter(
+                    Q(eucast__piper='R')
+                )
+            if drug=='PT':
+                queryset = queryset.filter(
+                    Q(eucast__pt='R')
+                )
+            if drug=='CTX':
+                queryset = queryset.filter(
+                    Q(eucast__ctx='R')
+                )
+            if drug=='CAZ':
+                queryset = queryset.filter(
+                    Q(eucast__caz='R')
+                )
+            if drug=='CAZ_AVI':
+                queryset = queryset.filter(
+                    Q(eucast__caz_avi='R')
+                )
+            if drug=='CEF':
+                queryset = queryset.filter(
+                    Q(eucast__cef='R')
+                )
+            if drug=='AZT':
+                queryset = queryset.filter(
+                    Q(eucast__azt='R')
+                )
+            if drug=='MEM':
+                queryset = queryset.filter(
+                    Q(eucast__mem='R')
+                )
+            if drug=='IMI':
+                queryset = queryset.filter(
+                    Q(eucast__imi='R')
+                )
+            if drug=='IMI_RELE':
+                queryset = queryset.filter(
+                    Q(eucast__imi_rele='R')
+                )
+            if drug=='ERT':
+                queryset = queryset.filter(
+                    Q(eucast__ert='R')
+                )
+            if drug=='FOSFO':
+                queryset = queryset.filter(
+                    Q(eucast__fosfo='R')
+                )
+            if drug=='TOBRA':
+                queryset = queryset.filter(
+                    Q(eucast__tobra='R')
+                )
+            if drug=='AMK':
+                queryset = queryset.filter(
+                    Q(eucast__amk='R')
+                )
+            if drug=='CIP':
+                queryset = queryset.filter(
+                    Q(eucast__cip='R')
+                )
+            if drug=='COLIS':
+                queryset = queryset.filter(
+                    Q(eucast__colis='R')
+                )
+        return queryset
+
+class AssemblyFilter(django_filters.FilterSet):
+    st = django_filters.CharFilter(field_name='mlst__st',label='Sequence Type')
+    #carbapenemase = django_filters.CharFilter(field_name='sample__carbapenemase__name',label='Carbapenemase')
+    sample__carbapenemase__name = django_filters.ModelChoiceFilter(label='Carbapenemase type',queryset=Carbapenemase.objects.all())
+
+    total_scaffolds_range = django_filters.RangeFilter(field_name='total_scaffolds',label='Number of scaffolds')
+    circular_scaffolds_range = django_filters.RangeFilter(field_name='circular_scaffolds',label='Number of circular scaffolds')
+    circularity_ratio_range = django_filters.RangeFilter(field_name='circularity_ratio',label='Circularity ratio')
+    assembly_length_range = django_filters.RangeFilter(field_name='assembly_length',label='Assembly length')
+    max_scaffold_length_range = django_filters.RangeFilter(field_name='max_scaffold_length',label='Largest scaffold length')
+    illumina_coverage_range = django_filters.RangeFilter(field_name='illumina_coverage',label='Illumina coverage')
+    ont_coverage_range = django_filters.RangeFilter(field_name='ont_coverage',label='ONT coverage')
+    ont_n50_range = django_filters.RangeFilter(field_name='ont_n50',label='ONT N50')
+
+    class Meta:
+        model = Assembly
+        fields = {'sample':['exact'],
+                    'st':['exact'],
+                    'sample__carbapenemase__name':['exact'],
+                    'total_scaffolds_range':['overlap'],
+                    'circular_scaffolds_range':['overlap'],
+                    'circularity_ratio_range':['overlap'],
+                    'assembly_length_range':['overlap'],
+                    'max_scaffold_length_range':['overlap'],
+                    'assembler':['icontains'],
+                    'illumina_coverage_range':['overlap'],
+                    'ont_coverage_range':['overlap'],
+                    'ont_n50_range':['overlap']}
 
 class GeneFilter(django_filters.FilterSet):
     amr_gene_family = django_filters.CharFilter(lookup_expr='icontains')

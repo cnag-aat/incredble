@@ -4,9 +4,6 @@ import sys
 import csv
 import argparse
 import django
-import codecs
-sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 django.setup()
 from resistome.models import *

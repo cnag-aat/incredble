@@ -1,0 +1,462 @@
+Genomes	Version	Species_Final
+AH0325	v1	Klebsiella pneumoniae
+AH0326	v1	Klebsiella pneumoniae
+AH0327	v1	Klebsiella pneumoniae
+AH0328	v1	Enterobacter cloacae complex
+AH0329	v1	Klebsiella pneumoniae
+AH0330	v1	Klebsiella pneumoniae
+AH0331	v1	Klebsiella pneumoniae
+AI2583	v1	Klebsiella pneumoniae
+AI2584	v1	Klebsiella pneumoniae
+AI2585	v1	Klebsiella pneumoniae
+AI2586	v1	Klebsiella pneumoniae
+AI2587	v1	Klebsiella pneumoniae
+AI2588	v1	Klebsiella pneumoniae
+AI2589	v1	Klebsiella pneumoniae
+AI2590	v1	Klebsiella pneumoniae
+AI2591	v1	Klebsiella pneumoniae
+AI2592	v1	Klebsiella pneumoniae
+AI2593	v1	Klebsiella pneumoniae
+AI2594	v1	Klebsiella pneumoniae
+AI2595	v1	Klebsiella pneumoniae
+AI2596	v1	Klebsiella pneumoniae
+AI2597	v5	Klebsiella pneumoniae
+AI2598	v1	Escherichia coli
+AI2599	v1	Klebsiella pneumoniae
+AI2600	v1	Klebsiella pneumoniae
+AI2601	v1	Klebsiella pneumoniae
+AI2602	v1	Citrobacter freundii
+AI2603	v1	Klebsiella pneumoniae
+AI2604	v1	Klebsiella pneumoniae
+AI2605	v1	Klebsiella pneumoniae
+AI2606	v1	Klebsiella pneumoniae
+AI2607	v1	Klebsiella pneumoniae
+AI2608	v2	Klebsiella pneumoniae
+AI2760	v1	Enterobacter cloacae complex
+AI2610	v1	Klebsiella pneumoniae
+AI2612	v1	Klebsiella pneumoniae
+AI2609	v1	Citrobacter freundii
+AI2614	v1	Klebsiella oxytoca
+AI2613	v1	Enterobacter cloacae complex
+AI2615	v1	Enterobacter cloacae complex
+AI2616	v1	Serratia marcescens
+AI2617	v1	Serratia marcescens
+AI2618	v1	Serratia marcescens
+AI2619	v1	Enterobacter cloacae complex
+AI2621	v1	Klebsiella pneumoniae
+AI2622	v1	Klebsiella pneumoniae
+AI2623	v1	Klebsiella oxytoca
+AI2624	v1	Enterobacter cloacae complex
+AI2620	v1	Enterobacter cloacae complex
+AI2627	v1	Klebsiella pneumoniae
+AI2628	v1	Klebsiella pneumoniae
+AI2629	v1	Klebsiella pneumoniae
+AI2630	v1	Klebsiella pneumoniae
+AI2631	v5	Klebsiella pneumoniae
+AI2632	v1	Klebsiella pneumoniae
+AI2633	v1	Klebsiella pneumoniae
+AI2634	v1	Klebsiella pneumoniae
+AI2635	v1	Klebsiella pneumoniae
+AI2636	v1	Klebsiella pneumoniae
+AI2637	v1	Klebsiella pneumoniae
+AI2638	v1	Klebsiella pneumoniae
+AI2639	v1	Klebsiella pneumoniae
+AI2640	v1	Klebsiella pneumoniae
+AI2641	v1	Klebsiella pneumoniae
+AI2642	v1	Citrobacter freundii
+AI2643	v1	Klebsiella pneumoniae
+AI2644	v1	Klebsiella pneumoniae
+AI2645	v1	Klebsiella pneumoniae
+AI2646	v1	Klebsiella pneumoniae
+AI2647	v1	Klebsiella pneumoniae
+AI2648	v1	Klebsiella pneumoniae
+AI2649	v1	Klebsiella pneumoniae
+AI2650	v1	Klebsiella pneumoniae
+AI2651	v1	Klebsiella pneumoniae
+AI2652	v1	Klebsiella pneumoniae
+AI2653	v1	Klebsiella pneumoniae
+AI2654	v1	Klebsiella pneumoniae
+AI2655	v1	Klebsiella pneumoniae
+AI2626	v1	Klebsiella pneumoniae
+AI2656	v1	Enterobacter cloacae complex
+AI2657	v1	Enterobacter cloacae complex
+AI2658	v1	Enterobacter cloacae complex
+AI2659	v1	Enterobacter cloacae complex
+AI2661	v1	Citrobacter freundii
+AI2662	v1	Enterobacter cloacae complex
+AI2664	v1	Klebsiella pneumoniae
+AI2665	v1	Klebsiella pneumoniae
+AI2666	v1	Citrobacter freundii
+AI2667	v1	Klebsiella pneumoniae
+AI2668	v1	Citrobacter freundii
+AI2669	v1	Klebsiella pneumoniae
+AI2670	v1	Klebsiella pneumoniae
+AI2671	v1	Klebsiella pneumoniae
+AI2672	v1	Enterobacter cloacae complex
+AI2673	v1	Enterobacter cloacae complex
+AI2674	v1	Enterobacter cloacae complex
+AI2675	v1	Klebsiella pneumoniae
+AI2676	v1	Klebsiella pneumoniae
+AI2677	v1	Klebsiella pneumoniae
+AI2678	v1	Klebsiella pneumoniae
+AI2679	v1	Enterobacter cloacae complex
+AI2680	v1	Citrobacter freundii
+AI2681	v1	Klebsiella pneumoniae
+AI2682	v1	Klebsiella pneumoniae
+AI2683	v1	Enterobacter cloacae complex
+AI2686	v1	Klebsiella pneumoniae
+AI2687	v1	Klebsiella pneumoniae
+AI2688	v1	Enterobacter cloacae complex
+AI2689	v1	Enterobacter cloacae complex
+AI2691	v1	Klebsiella pneumoniae
+AI2693	v1	Klebsiella pneumoniae
+AI2694	v1	Enterobacter cloacae complex
+AI2695	v1	Enterobacter cloacae complex
+AI2696	v1	Enterobacter cloacae complex
+AI2697	v1	Enterobacter cloacae complex
+AI2698	v1	Klebsiella pneumoniae
+AI2699	v1	Klebsiella oxytoca
+AI2700	v1	Klebsiella pneumoniae
+AI2701	v1	Klebsiella pneumoniae
+AI2702	v1	Klebsiella pneumoniae
+AI2703	v1	Escherichia coli
+AI2704	v1	Enterobacter cloacae complex
+AI2705	v1	Enterobacter cloacae complex
+AI2706	v1	Klebsiella pneumoniae
+AI2707	v1	Klebsiella pneumoniae
+AI2709	v1	Klebsiella pneumoniae
+AI2710	v1	Enterobacter cloacae complex
+AI2711	v1	Raoultella ornithinolytica
+AI2713	v1	Klebsiella pneumoniae
+AI2714	v1	Klebsiella pneumoniae
+AI2715	v1	Escherichia coli
+AI2716	v1	Enterobacter cloacae complex
+AI2717	v1	Klebsiella pneumoniae
+AI2719	v1	Enterobacter cloacae complex
+AI2721	v1	Escherichia coli
+AI2722	v1	Klebsiella pneumoniae
+AI2723	v1	Klebsiella pneumoniae
+AI2739	v1	Klebsiella pneumoniae
+AI2740	v1	Klebsiella pneumoniae
+AI2741	v1	Klebsiella pneumoniae
+AI2742	v1	Klebsiella pneumoniae
+AI2743	v1	Klebsiella pneumoniae
+AI2744	v1	Klebsiella oxytoca
+AI2745	v1	Klebsiella pneumoniae
+AI2746	v1	Klebsiella pneumoniae
+AI2747	v1	Enterobacter cloacae complex
+AI2748	v1	Klebsiella pneumoniae
+AI2749	v1	Klebsiella pneumoniae
+AI2750	v1	Klebsiella pneumoniae
+AI2751	v1	Klebsiella pneumoniae
+AI2752	v1	Klebsiella pneumoniae
+AI2753	v1	Klebsiella pneumoniae
+AI2754	v5	Klebsiella pneumoniae
+AI2755	v2	Klebsiella pneumoniae
+AI2756	v1	Klebsiella pneumoniae
+AI2757	v1	Klebsiella pneumoniae
+AI2660	v1	Klebsiella pneumoniae
+AI2759	v1	Enterobacter cloacae complex
+AI2761	v1	Klebsiella pneumoniae
+AI2762	v1	Enterobacter cloacae complex
+AI2763	v1	Klebsiella pneumoniae
+AI2764	v1	Klebsiella pneumoniae
+AI2765	v1	Klebsiella pneumoniae
+AI2766	v1	Klebsiella pneumoniae
+AI2767	v1	Klebsiella pneumoniae
+AI2768	v1	Klebsiella pneumoniae
+AI2769	v1	Klebsiella pneumoniae
+AI2770	v1	Klebsiella pneumoniae
+AI2771	v2	Klebsiella pneumoniae
+AI2772	v1	Enterobacter cloacae complex
+AI2773	v2	Klebsiella pneumoniae
+AI2774	v1	Enterobacter cloacae complex
+AI2775	v1	Klebsiella pneumoniae
+AI2776	v1	Klebsiella pneumoniae
+AI2777	v1	Klebsiella pneumoniae
+AI2778	v1	Klebsiella pneumoniae
+AI2779	v1	Klebsiella pneumoniae
+AI2780	v5	Klebsiella pneumoniae
+AI2781	v1	Klebsiella pneumoniae
+AI2782	v5	Klebsiella pneumoniae
+AI2784	v1	Klebsiella pneumoniae
+AI2785	v1	Klebsiella pneumoniae
+AI2786	v1	Klebsiella pneumoniae
+AI2787	v1	Klebsiella pneumoniae
+AI2789	v1	Klebsiella pneumoniae
+AI2790	v1	Klebsiella pneumoniae
+AI2791	v1	Klebsiella pneumoniae
+AI2792	v1	Klebsiella pneumoniae
+AI2793	v1	Klebsiella pneumoniae
+AI2794	v1	Klebsiella pneumoniae
+AI2795	v1	Serratia marcescens
+AI2796	v1	Enterobacter cloacae complex
+AI2797	v1	Enterobacter cloacae complex
+AI2798	v1	Enterobacter cloacae complex
+AI2799	v1	Enterobacter cloacae complex
+AI2800	v1	Klebsiella pneumoniae
+AI2801	v1	Klebsiella pneumoniae
+AI2802	v1	Enterobacter cloacae complex
+AI2803	v1	Klebsiella pneumoniae
+AI2804	v2	Enterobacter cloacae complex
+AI2805	v1	Klebsiella pneumoniae
+AI2806	v1	Klebsiella pneumoniae
+AI2807	v1	Klebsiella pneumoniae
+AI2808	v1	Klebsiella pneumoniae
+AI2809	v1	Klebsiella pneumoniae
+AI2810	v1	Klebsiella pneumoniae
+AI2811	v1	Klebsiella pneumoniae
+AI2812	v1	Klebsiella pneumoniae
+AI2813	v1	Klebsiella pneumoniae
+AI2814	v1	Klebsiella pneumoniae
+AI2815	v1	Klebsiella pneumoniae
+AI2816	v1	Klebsiella pneumoniae
+AI2817	v1	Klebsiella pneumoniae
+AI2818	v1	Klebsiella pneumoniae
+AI2819	v5	Klebsiella pneumoniae
+AI2820	v1	Klebsiella pneumoniae
+AI2821	v1	Escherichia coli
+AI2822	v1	Klebsiella pneumoniae
+AI2823	v5	Klebsiella pneumoniae
+AI2824	v5	Klebsiella pneumoniae
+AI2825	v1	Klebsiella pneumoniae
+AI2826	v1	Citrobacter freundii
+AI2828	v5	Klebsiella oxytoca
+AI2829	v1	Klebsiella pneumoniae
+AI2830	v1	Klebsiella pneumoniae
+AI2831	v1	Escherichia coli
+AI2834	v1	Escherichia coli
+AI2835	v1	Klebsiella pneumoniae
+AI2836	v1	Klebsiella pneumoniae
+AI2837	v1	Klebsiella pneumoniae
+AI2838	v1	Klebsiella pneumoniae
+AI2839	v1	Enterobacter cloacae complex
+AI2840	v1	Klebsiella pneumoniae
+AI2841	v1	Klebsiella pneumoniae
+AI2842	v1	Klebsiella pneumoniae
+AI2843	v1	Escherichia coli
+AI2844	v1	Klebsiella pneumoniae
+AI2846	v1	Klebsiella pneumoniae
+AI2847	v1	Klebsiella pneumoniae
+AI2848	v1	Klebsiella pneumoniae
+AI2849	v1	Klebsiella pneumoniae
+AI2850	v1	Klebsiella pneumoniae
+AI2851	v1	Klebsiella pneumoniae
+AI2852	v1	Escherichia coli
+AI2853	v1	Escherichia coli
+AI2854	v1	Klebsiella pneumoniae
+AI2855	v1	Klebsiella pneumoniae
+AI2856	v1	Klebsiella pneumoniae
+AI2857	v1	Serratia marcescens
+AI2858	v1	Escherichia coli
+AI2859	v1	Enterobacter cloacae complex
+AI2860	v1	Escherichia coli
+AI2861	v1	Klebsiella pneumoniae
+AI2862	v1	Klebsiella pneumoniae
+AI2863	v1	Klebsiella pneumoniae
+AI2865	v1	Enterobacter cloacae complex
+AI2866	v1	Enterobacter cloacae complex
+AI2867	v1	Klebsiella pneumoniae
+AI2868	v1	Klebsiella pneumoniae
+AI2870	v1	Klebsiella pneumoniae
+AI2871	v1	Klebsiella pneumoniae
+AI2872	v1	Serratia marcescens
+AI2873	v1	Klebsiella pneumoniae
+AI2874	v1	Klebsiella pneumoniae
+AI2875	v1	Klebsiella pneumoniae
+AI2876	v1	Klebsiella pneumoniae
+AI2877	v1	Klebsiella pneumoniae
+AI2878	v1	Klebsiella pneumoniae
+AI2879	v1	Klebsiella pneumoniae
+AI2880	v1	Klebsiella pneumoniae
+AI2882	v1	Klebsiella pneumoniae
+AI2883	v1	Klebsiella pneumoniae
+AI2884	v1	Serratia marcescens
+AI2885	v1	Klebsiella pneumoniae
+AI2886	v1	Klebsiella pneumoniae
+AI2887	v1	Serratia marcescens
+AI2888	v1	Klebsiella pneumoniae
+AI2889	v1	Klebsiella pneumoniae
+AI2890	v1	Escherichia coli
+AI2891	v1	Klebsiella pneumoniae
+AI2892	v1	Klebsiella pneumoniae
+AI2893	v1	Klebsiella pneumoniae
+AI2894	v1	Escherichia coli
+AI2895	v1	Klebsiella pneumoniae
+AI2896	v1	Klebsiella pneumoniae
+AI2897	v1	Klebsiella pneumoniae
+AI2898	v1	Klebsiella pneumoniae
+AI2899	v1	Escherichia coli
+AI2900	v1	Klebsiella pneumoniae
+AI2901	v1	Klebsiella pneumoniae
+AI2902	v1	Klebsiella pneumoniae
+AI2903	v1	Klebsiella pneumoniae
+AI2904	v1	Enterobacter cloacae complex
+AI2905	v1	Enterobacter cloacae complex
+AI2906	v1	Klebsiella pneumoniae
+AI2907	v1	Klebsiella pneumoniae
+AI2908	v1	Klebsiella pneumoniae
+AI2909	v1	Klebsiella pneumoniae
+AI2910	v1	Klebsiella pneumoniae
+AI2911	v1	Klebsiella pneumoniae
+AI2912	v1	Klebsiella pneumoniae
+AI2913	v1	Klebsiella aerogenes
+AI2914	v1	Klebsiella pneumoniae
+AI2915	v1	Enterobacter cloacae complex
+AI2916	v1	Enterobacter cloacae complex
+AI2917	v1	Klebsiella pneumoniae
+AI2918	v1	Klebsiella oxytoca
+AI2919	v1	Klebsiella pneumoniae
+AI2920	v1	Klebsiella pneumoniae
+AI2921	v1	Klebsiella pneumoniae
+AI2922	v1	Klebsiella pneumoniae
+AI2923	v1	Klebsiella pneumoniae
+AI2924	v1	Enterobacter cloacae complex
+AI2925	v1	Klebsiella pneumoniae
+AI2926	v1	Klebsiella pneumoniae
+AI2927	v1	Klebsiella pneumoniae
+AI2928	v1	Escherichia coli
+AI2929	v1	Klebsiella pneumoniae
+AI2930	v1	Klebsiella pneumoniae
+AI2931	v1	Klebsiella pneumoniae
+AI2932	v1	Klebsiella pneumoniae
+AI2934	v1	Klebsiella pneumoniae
+AI2935	v1	Citrobacter freundii
+AI2936	v1	Enterobacter cloacae complex
+AI2937	v1	Klebsiella oxytoca
+AI2938	v1	Escherichia coli
+AI2939	v1	Enterobacter cloacae complex
+AI2940	v1	Klebsiella pneumoniae
+AI2941	v1	Enterobacter cloacae complex
+AI2942	v1	Klebsiella pneumoniae
+AI2943	v1	Klebsiella oxytoca
+AI2945	v1	Klebsiella oxytoca
+AI2946	v1	Klebsiella oxytoca
+AI2949	v1	Escherichia coli
+AI2950	v1	Enterobacter cloacae complex
+AI2951	v1	Escherichia coli
+AI2952	v1	Klebsiella pneumoniae
+AI2953	v1	Klebsiella pneumoniae
+AI2954	v5	Klebsiella pneumoniae
+AI2957	v1	Klebsiella pneumoniae
+AI2958	v1	Klebsiella pneumoniae
+AI2959	v1	Escherichia coli
+AI2960	v1	Klebsiella pneumoniae
+AI2961	v1	Klebsiella pneumoniae
+AI2962	v1	Klebsiella pneumoniae
+AI2963	v1	Escherichia coli
+AI2964	v1	Enterobacter cloacae complex
+AI2965	v1	Klebsiella pneumoniae
+AI2966	v1	Klebsiella pneumoniae
+AI2967	v1	Klebsiella pneumoniae
+AI2968	v1	Klebsiella pneumoniae
+AI2969	v1	Klebsiella pneumoniae
+AI2970	v1	Klebsiella pneumoniae
+AI2971	v1	Klebsiella pneumoniae
+AI2972	v1	Enterobacter cloacae complex
+AI2973	v2	Klebsiella pneumoniae
+AI2974	v1	Klebsiella pneumoniae
+AI2975	v1	Klebsiella pneumoniae
+AI2976	v1	Klebsiella pneumoniae
+AI2977	v1	Klebsiella pneumoniae
+AI2978	v1	Escherichia coli
+AI2979	v1	Klebsiella pneumoniae
+AI2980	v2	Klebsiella pneumoniae
+AI2981	v1	Escherichia coli
+AI2982	v1	Klebsiella pneumoniae
+AI2983	v1	Enterobacter cloacae complex
+AI2984	v2	Enterobacter cloacae complex
+AI2985	v1	Klebsiella pneumoniae
+AI2989	v1	Klebsiella pneumoniae
+AI2991	v1	Klebsiella oxytoca
+AI2992	v5	Enterobacter cloacae complex
+AI2993	v1	Klebsiella pneumoniae
+AI2994	v1	Escherichia coli
+AI2996	v1	Klebsiella pneumoniae
+AI2998	v1	Klebsiella pneumoniae
+AI2999	v1	Enterobacter cloacae complex
+AI3000	v1	Klebsiella pneumoniae
+AI3001	v1	Klebsiella pneumoniae
+AI3002	v1	Klebsiella pneumoniae
+AI3003	v1	Klebsiella pneumoniae
+AI3004	v1	Klebsiella pneumoniae
+AI3006	v1	Klebsiella pneumoniae
+AI3007	v1	Klebsiella pneumoniae
+AI3008	v1	Klebsiella pneumoniae
+AI3009	v1	Klebsiella pneumoniae
+AI3010	v1	Klebsiella quasipneumoniae
+AI3011	v1	Klebsiella pneumoniae
+AI3012	v1	Klebsiella oxytoca
+AI3013	v2	Enterobacter cloacae complex
+AI3018	v1	Klebsiella pneumoniae
+AI3021	v1	Klebsiella pneumoniae
+AI3023	v5	Klebsiella pneumoniae
+AI3024	v1	Klebsiella pneumoniae
+AI3025	v1	Klebsiella pneumoniae
+AI3027	v1	Klebsiella pneumoniae
+AI3028	v1	Klebsiella pneumoniae
+AI3030	v1	Klebsiella pneumoniae
+AI3031	v1	Klebsiella pneumoniae
+AI3034	v1	Klebsiella pneumoniae
+AI3035	v5	Klebsiella pneumoniae
+AI3036	v1	Klebsiella pneumoniae
+AI3037	v1	Klebsiella pneumoniae
+AI3038	v1	Enterobacter cloacae complex
+AI3039	v1	Klebsiella pneumoniae
+AI3040	v1	Klebsiella pneumoniae
+AI3041	v1	Klebsiella pneumoniae
+AI3042	v1	Klebsiella pneumoniae
+AI3043	v5	Klebsiella pneumoniae
+AI3044	v1	Klebsiella pneumoniae
+AI3045	v2	Enterobacter cloacae complex
+AI3046	v2	Klebsiella pneumoniae
+AI3047	v1	Klebsiella pneumoniae
+AI3048	v1	Klebsiella pneumoniae
+AI3049	v1	Klebsiella pneumoniae
+AI3050	v1	Enterobacter cloacae complex
+AI3051	v1	Klebsiella pneumoniae
+AI3052	v1	Klebsiella pneumoniae
+AI3053	v1	Klebsiella pneumoniae
+AI3054	v1	Klebsiella pneumoniae
+AI3055	v1	Klebsiella pneumoniae
+AI3056	v1	Klebsiella pneumoniae
+AI3057	v1	Citrobacter freundii
+AI3058	v1	Citrobacter freundii
+AI3059	v2	Citrobacter freundii
+AI3060	v5	Klebsiella pneumoniae
+AI3062	v1	Klebsiella pneumoniae
+AI3063	v1	Klebsiella pneumoniae
+AI3064	v2	Klebsiella pneumoniae
+AI3065	v1	Klebsiella pneumoniae
+AI3067	v1	Klebsiella pneumoniae
+AI3069	v1	Klebsiella pneumoniae
+AI3070	v1	Klebsiella pneumoniae
+AI3071	v1	Klebsiella pneumoniae
+AN2335	v1	Klebsiella variicola
+AN2336	v5	Klebsiella oxytoca
+AN2337	v1	Klebsiella pneumoniae
+AN2338	v1	Klebsiella pneumoniae
+AN2339	v1	Klebsiella pneumoniae
+AN2340	v1	Klebsiella variicola
+AN2341	v1	Klebsiella pneumoniae
+AN2342	v1	Klebsiella pneumoniae
+AN2343	v1	Klebsiella pneumoniae
+AN2344	v1	Klebsiella pneumoniae
+AN2345	v1	Klebsiella pneumoniae
+AN2346	v1	Klebsiella pneumoniae
+AN2347	v1	Klebsiella pneumoniae
+AN2349	v1	Klebsiella pneumoniae
+AN2350	v1	Klebsiella pneumoniae
+AN2351	v1	Citrobacter koseri
+AN2352	v1	Klebsiella pneumoniae
+AN2353	v1	Citrobacter koseri
+AN2354	v1	Klebsiella pneumoniae
+AN2355	v1	Klebsiella pneumoniae
+AN2356	v1	Klebsiella pneumoniae
+AN2357	v1	Klebsiella pneumoniae
+AN2358	v1	Klebsiella pneumoniae
+AN2360	v1	Enterobacter cloacae complex
+AN2361	v1	Klebsiella pneumoniae
+AN2362	v1	Klebsiella pneumoniae
+AN2363	v1	Klebsiella oxytoca
+AN2364	v1	Enterobacter cloacae complex
