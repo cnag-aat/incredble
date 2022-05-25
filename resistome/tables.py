@@ -133,7 +133,7 @@ class ScaffoldsTable(tables.Table):
     #scaffold = tables.LinkColumn(verbose_name= 'RGI Genes' )
     jbrowse_link = tables.Column(verbose_name='Browse Genome')
     jbrowse_link = tables.TemplateColumn(
-        '<a href="https://resistome.cnag.cat/genomes/cre/browse/?loc={{record.scaffold}}&tracks=DNA%2CAnnotation%2CRGI-Annotation%2CAMRFinder-Annotation%2CResfinder&highlight=" target="_blank">Browse</a>')
+        '<a href="https://genomes.cnag.cat/genomes/cre/browse/?loc={{record.scaffold}}&tracks=DNA%2CAnnotation%2CRGI-Annotation%2CAMRFinder-Annotation%2CResfinder&highlight=" target="_blank">Browse</a>')
 
     species = tables.Column(empty_values=(),
                           verbose_name='Species')
