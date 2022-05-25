@@ -35,7 +35,7 @@ class AssemblyTable(tables.Table):
     sample = tables.Column(linkify=True,verbose_name='Sample name')
     barcode = tables.Column(verbose_name='Sample barcode',accessor='sample__barcode')
     st = tables.Column(accessor='mlst.st')
-    carbapenemase = tables.Column(verbose_name='Carbapenemase',accessor='sample__carbapenemase__name')
+    carbapenemase = tables.Column(verbose_name='Carbapenemase',accessor='sample__carb_names',orderable=False)
     ont_coverage = tables.Column(verbose_name='ONT coverage')
     ont_n50 = tables.Column(verbose_name='ONT read N50')
     class Meta:
