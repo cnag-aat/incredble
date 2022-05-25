@@ -98,7 +98,7 @@ class Sample(models.Model):
     coruna_code = models.CharField(max_length=200, db_index=True, blank=True, null=True, verbose_name="Other names")
     species = models.ForeignKey(Species, blank=True, null=True, on_delete=models.CASCADE, verbose_name="Genus/species")
     #type_of_carbapenemase = models.ForeignKey(TypeOfCarbapenemase, blank=True, null=True, on_delete=models.CASCADE)
-    carbapenemase = models.ManyToManyField(Carbapenemase, blank=True)
+    carbapenemase = models.ManyToManyField(Carbapenemase, blank=True, related_name='carbapenemase_types')
     #other_resistance_mechanisms = models.CharField(max_length=200, blank=True, null=True)
     #sequence_type = models.CharField(max_length=200, blank=True, null=True, verbose_name='sequence type (ST)')
     biological_sample_of_isolation = models.ForeignKey(BiologicalSampleOfIsolation, blank=True, null=True, on_delete=models.CASCADE, verbose_name="Biological sample")
@@ -138,6 +138,10 @@ class Sample(models.Model):
         from django.urls import reverse
         return reverse('sample_detail', args=[str(self.id)])
 
+    @property
+    def carb_names(self):
+        return ', '.join(l.name for l in self.carbapenemase.all())  # or similar
+
 
 class CLSI(models.Model):
     sample = models.OneToOneField(Sample, on_delete=models.CASCADE)
@@ -167,7 +171,7 @@ class CLSI(models.Model):
 
 
 class EUCAST(models.Model):
-    sample = models.OneToOneField(Sample, on_delete=models.CASCADE)
+    sample = models.OneToOneField(Sample, on_delete=models.CASCADE,related_name='eucast')
     piper = models.CharField(max_length=3, blank=True, null=True, verbose_name="PIPER")
     pt = models.CharField(max_length=3, blank=True, null=True, verbose_name="P/T")
     ctx = models.CharField(max_length=3, blank=True, null=True, verbose_name="CTX")
@@ -206,8 +210,8 @@ class Assembly(models.Model):
     max_scaffold_length = models.PositiveIntegerField(null=True, blank=True)
     assembler = models.CharField(max_length=40, null=True, blank=True)
     image = models.ImageField(upload_to='img',null=True, blank=True)
-    illumina_coverage = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
-    ont_coverage = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
+    illumina_coverage = models.DecimalField(max_digits=5, decimal_places=0, null=True, blank=True)
+    ont_coverage = models.DecimalField(max_digits=5, decimal_places=0, null=True, blank=True)
     ont_n50 = models.PositiveIntegerField(null=True, blank=True)
     class Meta:
         verbose_name_plural = 'Assemblies'
@@ -504,3 +508,13 @@ class GenomeUpload(models.Model):
     fasta = models.FileField(upload_to='uploaded_genomes/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     result = models.CharField(max_length=10000, blank=True)
+
+class ANI(models.Model):
+    edge = models.CharField(max_length=45, unique=True, db_index=True)
+    node_a  = models.ForeignKey(Scaffold, on_delete=models.CASCADE,related_name='node_a', related_query_name="node_a")
+    node_b  = models.ForeignKey(Scaffold, on_delete=models.CASCADE,related_name='node_b', related_query_name="node_b")
+    tANI = models.DecimalField(null=True, blank=True,max_digits=5, decimal_places=2)
+    ani_tw = models.DecimalField(null=True, blank=True,max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return '%s' % (self.edge)
