@@ -1202,7 +1202,7 @@ def gene_detail(request, pk=None, gene=None):
     location_string = str(annotation.scaffold) + ":" + \
         str(annotation.start) + ".." + str(annotation.end)
     annotation_data = [  # {'Agent': 'piper', 'CLSI': str(clsi.piper), 'EUCAST': str(eucast.piper)},
-        {'Name': 'Browse', 'Value': mark_safe('<a href="https://resistome.cnag.cat/genomes/cre/browse/?loc=' + location_string + \
+        {'Name': 'Browse', 'Value': mark_safe('<a href="https://genomes.cnag.cat/genomes/cre/browse/?loc=' + location_string + \
                                               '&tracks=DNA%2CAnnotation%2CRGI-Annotation%2CAMRFinder-Annotation%2CResfinder&highlight=" target="_blank">' + location_string + '</a>')},
         # {'Name': 'Browse', 'Value': mark_safe(str(annotation.jbrowse_link))},#str(annotation.scaffold) + ':' + str(annotation.start) + ".." + str(annotation.end) + str(annotation.orientation)},
         {'Name': 'Gene ID', 'Value': str(annotation.gene)},
