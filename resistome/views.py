@@ -1125,6 +1125,10 @@ def AnnotationFastaView(request):
                 genes = genes.filter(**{ff: request.GET.get(filter_field)})
             elif (ff == 'resistance'):
                 genes = genes.filter(Q(rgi='Yes') | Q(amrf='Yes'))
+            elif (ff == 'page'):
+                pass
+            elif (ff == 'sort'):
+                pass
             else:
                 genes = genes.filter(**{ff: request.GET.get(filter_field)})
     fasta = ''
@@ -1160,6 +1164,10 @@ def AnnotationCoordView(request):
                 genes = genes.filter(**{ff: request.GET.get(filter_field)})
             elif (ff == 'resistance'):
                 genes = genes.filter(Q(rgi='Yes') | Q(amrf='Yes'))
+            elif (ff == 'page'):
+                pass
+            elif (ff == 'sort'):
+                pass
             else:
                 genes = genes.filter(**{ff: request.GET.get(filter_field)})
     tsv = ''
