@@ -27,7 +27,7 @@ class SampleTable(tables.Table):
         paginate = {"per_page": 15}
         #attrs = {"class": "table-sm"}
         fields = ('name', 'barcode', 'coruna_code', 'species',
-                  'carbapenemase', 'st', 'isolation_location')
+                  'carbapenemase', 'st', 'isolation_location','isolation_year')
         #fields = ("name", )
         #id = tables.Column(linkify=True)
 
