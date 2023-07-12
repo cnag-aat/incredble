@@ -912,7 +912,8 @@ def sample_detail(request, pk=None, barcode=None):
         hosp = IsolationLocation.objects.get(name=sample.isolation_location)
         maploc = mark_safe("<a target='_blank' href='http://www.google.com/maps/place/" + str(
             hosp.latitude) + "," + str(hosp.longitude) + "'>" + str(sample.isolation_location) + "</a>")
-    age = str(int(sample.patient_data_age))
+    if sample.patient_data_age is not None:
+        age = str(int(sample.patient_data_age))
     carbapenemase_list = mark_safe(', '.join(b.name if ("Negative" in b.name or "Conflict" in b.name or "Broken" in b.name) else "<a href='/incredble/genes/?sample_barcode=" + sample.barcode + '&amrf_set__gene_symbol=' + b.name.replace("Broken ","") + "'>" + b.name + "</a>"  for b in sample.carbapenemase.all()))
 
     try:
