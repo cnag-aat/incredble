@@ -84,11 +84,11 @@ class SampleFilter(django_filters.FilterSet):
         ('CIP', 'CIP'),
         ('COLIS', 'COLIS'),
     )
-
+    date_range = django_filters.RangeFilter(field_name='isolation_year',label='Date range')
     resistance = django_filters.MultipleChoiceFilter(field_name='resistance',label='Resistant to',method='drug_resistance_filter',choices=RESISTANCE_CHOICES,null_label=None)
     class Meta:
         model = Sample
-        fields = {'name':['exact'],'barcode':['exact'],'species':['exact'], 'carbapenemase':['exact'],'resistance':['exact'],'biological_sample_of_isolation':['exact'],'collection':['exact'],'isolation_location':['exact'],'acquisition':['exact'],'st':['exact'],'amrf_set_gene_symbol':['icontains'],'gene_symbol':['icontains'],'patient_data_age':['gt','lt'],'patient_data_sex':['exact']}
+        fields = {'name':['exact'],'barcode':['exact'],'species':['exact'], 'carbapenemase':['exact'],'resistance':['exact'],'biological_sample_of_isolation':['exact'],'collection':['exact'],'isolation_location':['exact'],'date_range':['overlap'],'acquisition':['exact'],'st':['exact'],'amrf_set_gene_symbol':['icontains'],'gene_symbol':['icontains'],'patient_data_age':['gt','lt'],'patient_data_sex':['exact']}
     def drug_resistance_filter(self, queryset, name, value):
         for drug in value:
             if drug=='PIPER':
