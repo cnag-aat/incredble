@@ -873,8 +873,8 @@ def spain_map_filter(request):
             domain=dict(x=[0, 1], y=[0, 1])
         ),
         legend_itemsizing='trace',
-        height=600,
-        width=800
+        height=900,
+        width=1200
     )
 
 
